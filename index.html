@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juan Díaz | Videógrafo</title>
+<title>Juan Díaz | Portfolio</title>
 
 <style>
 * {
@@ -20,13 +20,14 @@ body {
 
 /* NAV */
 nav {
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 20px 40px;
-  position: fixed;
-  width: 100%;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(10px);
+  z-index: 100;
 }
 
 nav a {
@@ -73,14 +74,15 @@ nav a:hover {
   justify-content: space-around;
   padding: 40px;
   border-top: 1px solid #222;
+  flex-wrap: wrap;
 }
 
 .service {
-  text-align: center;
+  margin: 10px;
   opacity: 0.8;
 }
 
-/* SECTIONS */
+/* SECTION */
 section {
   padding: 80px 40px;
 }
@@ -96,15 +98,12 @@ h2 {
   gap: 20px;
 }
 
-.card {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.card iframe {
+/* VIDEO */
+.video iframe {
   width: 100%;
   height: 200px;
+  border-radius: 10px;
+  border: none;
 }
 
 /* ABOUT */
@@ -112,6 +111,7 @@ h2 {
   display: flex;
   gap: 40px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .about img {
@@ -119,6 +119,7 @@ h2 {
   border-radius: 10px;
 }
 
+/* CONTACT */
 footer {
   text-align: center;
   padding: 40px;
@@ -133,7 +134,7 @@ footer {
 <nav>
   <div><b>Juan Díaz</b></div>
   <div>
-    <a href="#work">Portfolio</a>
+    <a href="#portfolio">Portfolio</a>
     <a href="#about">Sobre mí</a>
     <a href="#contact">Contacto</a>
   </div>
@@ -142,47 +143,66 @@ footer {
 <!-- HERO -->
 <div class="hero">
   <div class="hero-text">
-    <h1>Videógrafo & Creativo Visual</h1>
+    <h1>Juan Díaz</h1>
     <p>
-      Especializado en videoclips musicales, contenido de marca, edición y colorización.
-      Creo piezas con identidad cinematográfica y narrativa visual.
+      Creador audiovisual y director creativo. Desarrollo contenido visual para artistas,
+      marcas y proyectos que buscan destacar.
     </p>
   </div>
 
-  <!-- CAMBIA ESTA IMAGEN -->
   <img src="https://picsum.photos/500/600">
 </div>
 
 <!-- SERVICES -->
 <div class="services">
-  <div class="service">🎬 Videoclips</div>
-  <div class="service">🏢 Contenido de marca</div>
-  <div class="service">🎞️ Edición</div>
+  <div class="service">🎬 Dirección y producción</div>
+  <div class="service">✂️ Edición de video</div>
   <div class="service">🎨 Color grading</div>
+  <div class="service">📢 Contenido de marca</div>
+  <div class="service">🎥 Videoclips</div>
 </div>
 
 <!-- VIDEOCLIPS -->
-<section id="work">
+<section id="portfolio">
   <h2>Videoclips</h2>
 
   <div class="grid">
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+    <div class="video">
+      <iframe src="https://player.vimeo.com/video/1183887876"></iframe>
     </div>
 
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+    <div class="video">
+      <iframe src="https://player.vimeo.com/video/1062974250"></iframe>
+    </div>
+
+    <div class="video">
+      <iframe src="https://player.vimeo.com/video/1062971665"></iframe>
+    </div>
+
+    <div class="video">
+      <iframe src="https://player.vimeo.com/video/1034642854"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTOS -->
+<section>
+  <h2>Cubrimiento de eventos</h2>
+
+  <div class="grid">
+    <div class="video">
+      <iframe src="https://player.vimeo.com/video/1032576795"></iframe>
     </div>
   </div>
 </section>
 
 <!-- MARCAS -->
 <section>
-  <h2>Contenido de marca</h2>
+  <h2>Contenido para marcas</h2>
 
   <div class="grid">
-    <div class="card">
-      <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+    <div class="video">
+      <iframe src="https://player.vimeo.com/video/1183939530"></iframe>
     </div>
   </div>
 </section>
@@ -195,9 +215,9 @@ footer {
     <div>
       <h2>Sobre mí</h2>
       <p>
-        Soy Juan Díaz, productor audiovisual enfocado en videoclips musicales
-        y contenido visual para marcas. Trabajo desde la dirección hasta la postproducción,
-        cuidando cada detalle visual.
+        Soy Juan Díaz, creador audiovisual enfocado en transformar ideas en piezas visuales con impacto.
+        Trabajo en videoclips, contenido de marca y proyectos narrativos, integrando dirección, edición y color
+        para lograr resultados con identidad.
       </p>
     </div>
   </div>
@@ -206,7 +226,9 @@ footer {
 <!-- CONTACT -->
 <section id="contact">
   <h2>Contacto</h2>
-  <p>Email: tuemail@email.com</p>
+  <p>Email: juandiazp95@gmail.com</p>
+  <p>WhatsApp: +57 302 620 6880</p>
+  <p>Instagram: @korgi779</p>
 </section>
 
 <footer>
