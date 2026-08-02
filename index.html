@@ -12,16 +12,39 @@
 body{background:#000;color:#fff;cursor:none;}
 html{scroll-behavior:smooth;}
 
-/* CURSOR PRO */
+/* LOADER */
+.loader{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:3000;
+transition:opacity 1s ease;
+}
+.loader.hidden{opacity:0;pointer-events:none;}
+.loader span{
+font-family:'Roboto';
+font-size:28px;
+opacity:.8;
+letter-spacing:2px;
+animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+0%,100%{opacity:.3;}
+50%{opacity:1;}
+}
+
+/* CURSOR */
 .cursor{
-width:20px;height:20px;
+width:18px;height:18px;
 border:1px solid #fff;
 border-radius:50%;
 position:fixed;
-top:0;left:0;
 pointer-events:none;
 transform:translate(-50%,-50%);
-transition:transform .15s ease, opacity .3s;
+transition:transform .15s ease, background .2s;
 z-index:2000;
 }
 .cursor.hover{
@@ -70,6 +93,7 @@ align-items:flex-start;
 padding:0 10%;
 }
 
+/* TITULO */
 .brand{
 font-family:'Roboto', sans-serif;
 font-weight:700;
@@ -95,12 +119,13 @@ animation:fadeUp 1s ease forwards 0.4s;
 to{opacity:1;transform:translateY(0);}
 }
 
-/* BOTON PRO */
+/* BOTON */
 .btn{
 margin-top:20px;
 display:inline-block;
 padding:8px 16px;
 font-size:13px;
+letter-spacing:0.5px;
 text-decoration:none;
 color:#fff;
 border:1px solid rgba(255,255,255,0.5);
@@ -119,23 +144,18 @@ width:100%;height:100%;
 background:linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
 transition:0.6s;
 }
-
 .btn:hover::before{left:100%;}
-.btn:hover{
-background:#fff;
-color:#000;
-transform:translateY(-2px);
-}
+.btn:hover{background:#fff;color:#000;}
 
 /* SECTIONS */
 section{padding:100px 10%;}
 
-/* APPLE SCROLL */
+/* SCROLL PRO */
 .reveal{
 opacity:0;
 transform:translateY(100px) scale(0.96);
 filter:blur(12px);
-transition:all 1.4s cubic-bezier(0.16,1,0.3,1);
+transition:all 1.3s cubic-bezier(0.16,1,0.3,1);
 }
 .reveal.active{
 opacity:1;
@@ -222,11 +242,8 @@ width:100%;height:100%;
 background:linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
 transition:0.6s;
 }
-
 .contact-buttons a:hover::before{left:100%;}
-.contact-buttons a:hover{
-background:#fff;color:#000;
-}
+.contact-buttons a:hover{background:#fff;color:#000;}
 
 /* MOBILE */
 @media(max-width:768px){
@@ -240,6 +257,10 @@ section{padding:70px 8%;}
 
 <body>
 
+<!-- LOADER -->
+<div class="loader"><span>Pantera Creative</span></div>
+
+<!-- CURSOR -->
 <div class="cursor"></div>
 
 <nav>
@@ -252,8 +273,9 @@ section{padding:70px 8%;}
 </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1#t=40s"></iframe>
 <div class="overlay"></div>
 
 <div class="hero-content">
@@ -322,6 +344,27 @@ section{padding:70px 8%;}
 </div>
 </section>
 
+<!-- ABOUT (INTOCABLE) -->
+<section id="about" class="about reveal">
+<img src="https://i.ibb.co/DgMfWBqN/IMG-0508.jpg">
+<div class="about-text">
+<h2>Sobre nosotros</h2>
+<p>(Este texto lo editas tú luego)</p>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="reveal">
+<div class="gallery">
+<img src="https://i.ibb.co/d0P2QtJB/IMG-5758.jpg">
+<img src="https://i.ibb.co/1GfjNGt5/IMG-5755.jpg">
+<img src="https://i.ibb.co/GvyDWjHK/IMG-3531.jpg">
+<img src="https://i.ibb.co/xSKhH4Sq/IMG-3535.jpg">
+<img src="https://i.ibb.co/99M8xfyt/IMG-9481.jpg">
+<img src="https://i.ibb.co/mVwk9nrm/IMG-9972.jpg">
+</div>
+</section>
+
 <!-- PORTFOLIO -->
 <section id="portfolio" class="portfolio reveal">
 
@@ -343,6 +386,7 @@ section{padding:70px 8%;}
 
 <!-- CONTACT -->
 <section id="contact" class="contact reveal">
+
 <h2>Contacto</h2>
 
 <div class="contact-buttons">
@@ -350,10 +394,16 @@ section{padding:70px 8%;}
 <a href="https://wa.me/573026206880" target="_blank">WhatsApp</a>
 <a href="#">Instagram</a>
 </div>
+
 </section>
 
 <script>
-// SCROLL REVEAL
+// LOADER
+window.addEventListener("load",()=>{
+setTimeout(()=>document.querySelector(".loader").classList.add("hidden"),1200);
+});
+
+// SCROLL
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -363,17 +413,21 @@ entry.target.classList.add('active');
 },{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-// CURSOR PRO (SIN GLITCH)
+// CURSOR
 const cursor=document.querySelector('.cursor');
-
 window.addEventListener('mousemove',e=>{
 cursor.style.top=e.clientY+'px';
 cursor.style.left=e.clientX+'px';
 });
-
 document.querySelectorAll('a, iframe').forEach(el=>{
 el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
 el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
+});
+
+// SONIDO UI SUTIL
+const clickSound=new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
+document.querySelectorAll("a").forEach(btn=>{
+btn.addEventListener("click",()=>{clickSound.volume=0.2;clickSound.play();});
 });
 </script>
 
