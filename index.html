@@ -48,8 +48,8 @@ transition:transform .15s ease, background .2s;
 z-index:2000;
 }
 .cursor.hover{
-transform:translate(-50%,-50%) scale(2);
-background:rgba(255,255,255,0.2);
+transform:translate(-50%,-50%) scale(1.8);
+background:rgba(255,255,255,0.15);
 }
 
 /* NAV */
@@ -76,7 +76,6 @@ nav a:hover{opacity:0.6;}
 position:absolute;top:50%;left:50%;
 width:177.77vh;height:100vh;
 transform:translate(-50%,-50%);
-pointer-events:none;
 }
 
 .overlay{
@@ -119,7 +118,7 @@ animation:fadeUp 1s ease forwards 0.4s;
 to{opacity:1;transform:translateY(0);}
 }
 
-/* BOTON */
+/* BOTONES PRO */
 .btn{
 margin-top:20px;
 display:inline-block;
@@ -128,7 +127,7 @@ font-size:13px;
 letter-spacing:0.5px;
 text-decoration:none;
 color:#fff;
-border:1px solid rgba(255,255,255,0.5);
+border:1px solid rgba(255,255,255,0.4);
 border-radius:999px;
 background:transparent;
 transition:all 0.3s ease;
@@ -208,7 +207,6 @@ width:100%;
 height:280px;
 margin-bottom:25px;
 border:none;
-pointer-events:none;
 transition:.4s;
 }
 .portfolio iframe:hover{
@@ -223,8 +221,8 @@ display:flex;justify-content:center;gap:15px;flex-wrap:wrap;
 }
 
 .contact-buttons a{
-padding:8px 16px;
-border:1px solid rgba(255,255,255,0.5);
+padding:8px 14px;
+border:1px solid rgba(255,255,255,0.4);
 border-radius:999px;
 text-decoration:none;
 color:#fff;
@@ -257,10 +255,7 @@ section{padding:70px 8%;}
 
 <body>
 
-<!-- LOADER -->
 <div class="loader"><span>Pantera Creative</span></div>
-
-<!-- CURSOR -->
 <div class="cursor"></div>
 
 <nav>
@@ -273,9 +268,8 @@ section{padding:70px 8%;}
 </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1#t=40s"></iframe>
+<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1"></iframe>
 <div class="overlay"></div>
 
 <div class="hero-content">
@@ -286,7 +280,7 @@ section{padding:70px 8%;}
 </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES (INTACTO) -->
 <section id="services">
 <h2 class="reveal">Servicios</h2>
 
@@ -344,7 +338,6 @@ section{padding:70px 8%;}
 </div>
 </section>
 
-<!-- ABOUT (INTOCABLE) -->
 <section id="about" class="about reveal">
 <img src="https://i.ibb.co/DgMfWBqN/IMG-0508.jpg">
 <div class="about-text">
@@ -353,7 +346,6 @@ section{padding:70px 8%;}
 </div>
 </section>
 
-<!-- GALLERY -->
 <section class="reveal">
 <div class="gallery">
 <img src="https://i.ibb.co/d0P2QtJB/IMG-5758.jpg">
@@ -365,9 +357,7 @@ section{padding:70px 8%;}
 </div>
 </section>
 
-<!-- PORTFOLIO -->
 <section id="portfolio" class="portfolio reveal">
-
 <h2>Portafolio</h2>
 
 <h3>Videoclips</h3>
@@ -381,12 +371,9 @@ section{padding:70px 8%;}
 
 <h3>Marcas</h3>
 <iframe src="https://player.vimeo.com/video/1183939530"></iframe>
-
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="contact reveal">
-
 <h2>Contacto</h2>
 
 <div class="contact-buttons">
@@ -394,7 +381,6 @@ section{padding:70px 8%;}
 <a href="https://wa.me/573026206880" target="_blank">WhatsApp</a>
 <a href="#">Instagram</a>
 </div>
-
 </section>
 
 <script>
@@ -413,18 +399,33 @@ entry.target.classList.add('active');
 },{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-// CURSOR
+// CURSOR (FIX GLITCH)
 const cursor=document.querySelector('.cursor');
 window.addEventListener('mousemove',e=>{
 cursor.style.top=e.clientY+'px';
 cursor.style.left=e.clientX+'px';
 });
-document.querySelectorAll('a, iframe').forEach(el=>{
+
+// SOLO LINKS (NO IFRAME → evita bug)
+document.querySelectorAll('a').forEach(el=>{
 el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
 el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
 });
 
-// SONIDO UI SUTIL
+// VIMEO HOVER PREVIEW (SIN BLOQUEAR CLICK)
+document.querySelectorAll(".portfolio iframe").forEach(iframe=>{
+let original=iframe.src;
+
+iframe.addEventListener("mouseenter",()=>{
+iframe.src=original+"?autoplay=1&muted=1";
+});
+
+iframe.addEventListener("mouseleave",()=>{
+iframe.src=original;
+});
+});
+
+// SONIDO
 const clickSound=new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
 document.querySelectorAll("a").forEach(btn=>{
 btn.addEventListener("click",()=>{clickSound.volume=0.2;clickSound.play();});
