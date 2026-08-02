@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Productora</title>
 
-<!-- ROBOTO FONT -->
+<!-- ROBOTO -->
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
 
 <style>
@@ -39,9 +39,16 @@ backdrop-filter:blur(10px);
 z-index:1000;
 }
 
+/* LOGO ANIMADO */
 .logo{
 height:30px;
 object-fit:contain;
+opacity:0;
+animation:fadeLogo 1.5s ease forwards;
+}
+
+@keyframes fadeLogo{
+to{opacity:1;}
 }
 
 nav a{
@@ -84,20 +91,38 @@ justify-content:center;
 padding:0 10%;
 }
 
-/* NUEVO TEXTO MARCA */
+/* TITULO PRINCIPAL */
 .brand-name{
 font-family:'Roboto', sans-serif;
 font-weight:700;
 font-style:italic;
-font-size:20px;
-margin-bottom:10px;
-letter-spacing:1px;
+font-size:48px;
+letter-spacing:2px;
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 1.2s ease forwards;
 }
 
+/* SUBTITULO */
 .hero h2{
-font-size:42px;
+font-size:28px;
+margin-top:10px;
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 1.2s ease forwards;
+animation-delay:0.3s;
 }
 
+/* TEXTO */
+.hero p{
+margin-top:10px;
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 1.2s ease forwards;
+animation-delay:0.6s;
+}
+
+/* BOTON */
 .btn{
 margin-top:20px;
 border:1px solid #fff;
@@ -105,6 +130,18 @@ padding:10px 20px;
 text-decoration:none;
 color:#fff;
 width:fit-content;
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp 1.2s ease forwards;
+animation-delay:0.9s;
+}
+
+/* ANIMACION GENERAL */
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 /* SECTIONS */
@@ -124,30 +161,6 @@ border:1px solid #333;
 padding:25px;
 }
 
-.service-box h3{
-margin-bottom:10px;
-}
-
-.service-box small{
-display:block;
-opacity:.7;
-margin-bottom:15px;
-}
-
-.service-box ul{
-margin-left:15px;
-margin-bottom:15px;
-}
-
-.service-box li{
-margin-bottom:5px;
-}
-
-.enfoque{
-font-size:14px;
-opacity:.8;
-}
-
 /* ABOUT */
 .about{
 display:flex;
@@ -160,10 +173,6 @@ align-items:center;
 width:100%;
 max-width:400px;
 object-fit:cover;
-}
-
-.about-text{
-max-width:600px;
 }
 
 /* GALLERY */
@@ -192,63 +201,20 @@ text-align:center;
 margin-bottom:50px;
 }
 
-.portfolio h3{
-margin-top:40px;
-margin-bottom:15px;
-}
-
-.portfolio iframe{
-width:100%;
-height:280px;
-margin-bottom:25px;
-border:none;
-}
-
 /* CONTACT */
 .contact{
 text-align:center;
 }
 
-.contact-buttons{
-margin-top:30px;
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.contact-buttons a{
-border:1px solid #fff;
-padding:10px 18px;
-text-decoration:none;
-color:#fff;
-font-size:14px;
-transition:.3s;
-}
-
-.contact-buttons a:hover{
-background:#fff;
-color:#000;
-}
-
 /* MOBILE */
 @media(max-width:768px){
 
-.hero iframe{
-width:100vw;
-height:56.25vw;
+.brand-name{
+font-size:34px;
 }
 
 .hero h2{
-font-size:28px;
-}
-
-.about{
-flex-direction:column;
-}
-
-section{
-padding:70px 8%;
+font-size:20px;
 }
 
 }
@@ -278,127 +244,9 @@ padding:70px 8%;
 <div class="hero-content">
 
 <div class="brand-name">Pantera.Creative</div>
-
 <h2>Productora audiovisual</h2>
 <p>Contenido con intención, estética y impacto</p>
 <a href="#portfolio" class="btn">Ver portafolio</a>
-
-</div>
-
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-<h2>Servicios</h2>
-
-<div class="services-grid">
-
-<div class="service-box">
-<h3>Contenido para marcas</h3>
-<small>Aquí vive todo lo comercial</small>
-<ul>
-<li>Contenido para redes (reels, piezas cortas)</li>
-<li>Campañas publicitarias</li>
-<li>Fashion films</li>
-<li>Contenido editorial</li>
-<li>Activaciones de marcas</li>
-</ul>
-<div class="enfoque">Enfoque: posicionamiento + estética + impacto</div>
-</div>
-
-<div class="service-box">
-<h3>Contenido corporativo</h3>
-<small>Empresas serias / industria</small>
-<ul>
-<li>Videos institucionales</li>
-<li>Procesos industriales</li>
-<li>Cultura empresarial</li>
-<li>Presentaciones de empresa</li>
-</ul>
-<div class="enfoque">Enfoque: claridad + confianza + profesionalismo</div>
-</div>
-
-<div class="service-box">
-<h3>Contenido artístico</h3>
-<small>Artistas, música, proyectos creativos</small>
-<ul>
-<li>Videoclips</li>
-<li>Teasers y piezas creativas</li>
-<li>Documentales / perfiles</li>
-<li>Proyectos visuales</li>
-</ul>
-<div class="enfoque">Enfoque: identidad + narrativa + estética</div>
-</div>
-
-<div class="service-box">
-<h3>Eventos y experiencias</h3>
-<small>Cobertura, contenido en tiempo real y amplificación</small>
-<ul>
-<li>Cobertura de eventos</li>
-<li>Contenido en tiempo real</li>
-<li>Piezas post-evento</li>
-<li>Activaciones de marca</li>
-</ul>
-<div class="enfoque">Enfoque: visibilidad + amplificación</div>
-</div>
-
-</div>
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="about">
-
-<img src="https://i.ibb.co/DgMfWBqN/IMG-0508.jpg">
-
-<div class="about-text">
-<h2>Sobre nosotros</h2>
-<p>
-(Este texto lo editas tú luego)
-</p>
-</div>
-
-</section>
-
-<!-- GALLERY -->
-<section>
-<div class="gallery">
-
-<img src="https://i.ibb.co/d0P2QtJB/IMG-5758.jpg">
-<img src="https://i.ibb.co/1GfjNGt5/IMG-5755.jpg">
-<img src="https://i.ibb.co/GvyDWjHK/IMG-3531.jpg">
-<img src="https://i.ibb.co/xSKhH4Sq/IMG-3535.jpg">
-<img src="https://i.ibb.co/99M8xfyt/IMG-9481.jpg">
-<img src="https://i.ibb.co/mVwk9nrm/IMG-9972.jpg">
-
-</div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio" class="portfolio">
-
-<h2>Portafolio</h2>
-
-<h3>Videoclips</h3>
-<iframe src="https://player.vimeo.com/video/1183887876"></iframe>
-
-<h3>Eventos</h3>
-<iframe src="https://player.vimeo.com/video/1032576795"></iframe>
-
-<h3>Marcas</h3>
-<iframe src="https://player.vimeo.com/video/1183939530"></iframe>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact">
-
-<h2>Contacto</h2>
-
-<div class="contact-buttons">
-
-<a href="mailto:juanbiazp95@gmail.com">Correo</a>
-<a href="https://wa.me/573026206880" target="_blank">WhatsApp</a>
-<a href="#">Instagram</a>
 
 </div>
 
