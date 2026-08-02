@@ -6,125 +6,133 @@
 <title>Juan Díaz | Productor Audiovisual</title>
 
 <style>
-* {margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
-body {background:#0d0d0d;color:white;scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+body{background:#0d0d0d;color:white;scroll-behavior:smooth;}
 
 /* NAV */
-nav {
-  position:fixed;
-  width:100%;
-  top:0;
-  display:flex;
-  justify-content:space-between;
-  padding:15px 40px;
-  background:rgba(0,0,0,0.85);
-  z-index:1000;
+nav{
+position:fixed;
+width:100%;
+top:0;
+display:flex;
+justify-content:space-between;
+padding:15px 40px;
+background:rgba(0,0,0,0.85);
+z-index:1000;
 }
 
-nav ul {display:flex;gap:20px;list-style:none;}
-nav a {color:white;text-decoration:none;font-size:14px;}
+nav ul{display:flex;gap:20px;list-style:none;}
+nav a{color:white;text-decoration:none;font-size:14px;}
 
-/* HERO VIDEO */
-.hero {
-  height:70vh;
-  position:relative;
-  overflow:hidden;
+/* HERO */
+.hero{
+height:75vh;
+position:relative;
+overflow:hidden;
 }
 
-.hero video {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(0.6);
+.video-bg{
+position:absolute;
+top:50%;
+left:50%;
+width:120%;
+height:120%;
+transform:translate(-50%,-50%);
+z-index:-1;
 }
 
-.hero-content {
-  position:absolute;
-  top:50%;
-  left:10%;
-  transform:translateY(-50%);
+.video-bg iframe{
+width:100%;
+height:100%;
+pointer-events:none;
 }
 
-.hero h1 {font-size:45px;}
-.hero p {opacity:0.8;margin-top:10px;}
-
-.hero button {
-  margin-top:20px;
-  padding:12px 25px;
-  background:white;
-  border:none;
-  cursor:pointer;
+.hero::after{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.5);
 }
+
+.hero-content{
+position:relative;
+top:50%;
+transform:translateY(-50%);
+padding-left:10%;
+z-index:2;
+}
+
+.hero h1{font-size:50px;}
+.hero p{opacity:0.8;margin-top:10px;}
+
+.hero button{
+margin-top:20px;
+padding:12px 25px;
+background:white;
+border:none;
+cursor:pointer;
+}
+
+/* SECTIONS */
+section{padding:80px 10%;}
 
 /* SERVICES */
-.services {
-  padding:80px 10%;
-  text-align:center;
-}
-
-.services h2 {margin-bottom:40px;}
-
-.service-grid {
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  flex-wrap:wrap;
+.services{text-align:center;}
+.service-grid{
+display:flex;
+justify-content:center;
+gap:40px;
+flex-wrap:wrap;
+margin-top:40px;
 }
 
 /* ABOUT */
-.about {
-  padding:80px 10%;
-  text-align:center;
-  max-width:800px;
-  margin:auto;
+.about{
+max-width:800px;
+margin:auto;
+text-align:center;
 }
 
-.about h2 {font-size:35px;margin-bottom:20px;}
-.about p {opacity:0.7;line-height:1.6;}
+.about h2{font-size:35px;margin-bottom:20px;}
+.about p{opacity:0.7;line-height:1.6;margin-bottom:15px;}
 
 /* PORTFOLIO */
-.portfolio {
-  padding:80px 10%;
+.portfolio h2{margin-bottom:40px;}
+.category{margin-bottom:60px;}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
 }
 
-.portfolio h2 {margin-bottom:40px;}
-
-.category {margin-bottom:60px;}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-  gap:20px;
+iframe{
+width:100%;
+height:250px;
+border:none;
 }
 
-iframe {
-  width:100%;
-  height:250px;
-  border:none;
+/* CONTACT */
+.contact{
+text-align:center;
 }
 
-/* GALLERY */
-.gallery {
-  padding:80px 10%;
-}
+.contact h2{margin-bottom:30px;}
 
-.gallery-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:15px;
-}
-
-.gallery img {
-  width:100%;
-  height:250px;
-  object-fit:cover;
+.contact a{
+display:inline-block;
+margin:10px;
+padding:12px 25px;
+background:white;
+color:black;
+text-decoration:none;
 }
 
 /* FOOTER */
-footer {
-  text-align:center;
-  padding:40px;
-  opacity:0.5;
+footer{
+text-align:center;
+padding:40px;
+opacity:0.5;
 }
 </style>
 </head>
@@ -133,100 +141,121 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <h3>Juan Díaz</h3>
-  <ul>
-    <li><a href="#services">Servicios</a></li>
-    <li><a href="#about">Sobre mí</a></li>
-    <li><a href="#portfolio">Portafolio</a></li>
-  </ul>
+<h3>Juan Díaz</h3>
+<ul>
+<li><a href="#services">Servicios</a></li>
+<li><a href="#about">Sobre mí</a></li>
+<li><a href="#portfolio">Portafolio</a></li>
+<li><a href="#contact">Contacto</a></li>
+</ul>
 </nav>
 
-<!-- HERO VIDEO LOOP -->
+<!-- HERO -->
 <section class="hero">
-  <video autoplay muted loop playsinline id="heroVideo">
-    <source src="https://player.vimeo.com/progressive_redirect/playback/1183887876/rendition/720p/file.mp4" type="video/mp4">
-  </video>
 
-  <div class="hero-content">
-    <h1>Juan Díaz</h1>
-    <p>Productor Audiovisual especializado en videoclips</p>
-    <button onclick="document.getElementById('portfolio').scrollIntoView()">Ver Portafolio</button>
-  </div>
+<div class="video-bg">
+<iframe 
+src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1#t=40s"
+frameborder="0"
+allow="autoplay; fullscreen"
+allowfullscreen>
+</iframe>
+</div>
+
+<div class="hero-content">
+<h1>Juan Díaz</h1>
+<p>Productor Audiovisual especializado en videoclips</p>
+<button onclick="document.getElementById('portfolio').scrollIntoView()">Ver Portafolio</button>
+</div>
+
 </section>
 
 <!-- SERVICES -->
 <section id="services" class="services">
-  <h2>Servicios</h2>
-  <div class="service-grid">
-    <div>Dirección y Producción</div>
-    <div>Edición</div>
-    <div>Color Grading</div>
-    <div>Videoclips Musicales</div>
-  </div>
+<h2>Servicios</h2>
+<div class="service-grid">
+<div>Dirección y Producción</div>
+<div>Edición</div>
+<div>Color Grading</div>
+<div>Videoclips Musicales</div>
+</div>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="about">
-  <h2>Sobre mí</h2>
-  <p>
-    Soy Juan Díaz, productor audiovisual enfocado en videoclips musicales 
-    y contenido visual de alto impacto. Desarrollo proyectos desde la idea 
-    hasta la postproducción, creando piezas con identidad visual fuerte 
-    y narrativa cinematográfica.
-  </p>
+<h2>Sobre mí</h2>
+
+<p><strong>Creo contenido que compite y gana atención.</strong></p>
+
+<p>
+Soy productor audiovisual, director y editor enfocado en desarrollar piezas 
+que conectan rápido y permanecen. Cada proyecto tiene una intención clara, 
+una estética definida y una ejecución precisa.
+</p>
+
+<p>
+En un entorno saturado de contenido, mi enfoque es simple: destacar. 
+Construyo imágenes que atrapan, ritmos que mantienen y resultados que funcionan, 
+ya sea para artistas, marcas o proyectos comerciales.
+</p>
+
+<p>
+No se trata solo de verse bien. Se trata de impactar, conectar y quedarse 
+en la mente de quien lo ve.
+</p>
+
 </section>
 
 <!-- PORTFOLIO -->
 <section id="portfolio" class="portfolio">
-  <h2>Portafolio</h2>
+<h2>Portafolio</h2>
 
-  <div class="category">
-    <h3>Videoclips</h3>
-    <div class="grid">
-      <iframe src="https://player.vimeo.com/video/1183887876"></iframe>
-      <iframe src="https://player.vimeo.com/video/1062974250"></iframe>
-      <iframe src="https://player.vimeo.com/video/1062971665"></iframe>
-      <iframe src="https://player.vimeo.com/video/1034642854"></iframe>
-    </div>
-  </div>
+<div class="category">
+<h3>Videoclips</h3>
+<div class="grid">
+<iframe src="https://player.vimeo.com/video/1183887876"></iframe>
+<iframe src="https://player.vimeo.com/video/1062974250"></iframe>
+<iframe src="https://player.vimeo.com/video/1062971665"></iframe>
+<iframe src="https://player.vimeo.com/video/1034642854"></iframe>
+</div>
+</div>
 
-  <div class="category">
-    <h3>Eventos</h3>
-    <div class="grid">
-      <iframe src="https://player.vimeo.com/video/1032576795"></iframe>
-    </div>
-  </div>
+<div class="category">
+<h3>Eventos</h3>
+<div class="grid">
+<iframe src="https://player.vimeo.com/video/1032576795"></iframe>
+</div>
+</div>
 
-  <div class="category">
-    <h3>Marcas</h3>
-    <div class="grid">
-      <iframe src="https://player.vimeo.com/video/1183939530"></iframe>
-    </div>
-  </div>
+<div class="category">
+<h3>Marcas</h3>
+<div class="grid">
+<iframe src="https://player.vimeo.com/video/1183939530"></iframe>
+</div>
+</div>
 
 </section>
 
-<!-- GALERÍA (AQUÍ VAN TUS FOTOS) -->
-<section class="gallery">
-  <h2>Fotografía</h2>
-  <div class="gallery-grid">
-    <!-- AQUÍ PEGAS TUS LINKS DE IMÁGENES -->
-    <!-- ejemplo -->
-    <!-- <img src="LINK_DE_DRIVE"> -->
-  </div>
+<!-- CONTACT -->
+<section id="contact" class="contact">
+<h2>Contacto</h2>
+
+<a href="mailto:juanbiazp95@gmail.com">Enviar correo</a>
+
+<a href="https://wa.me/573026206880" target="_blank">
+Escribir por WhatsApp
+</a>
+
+<!-- reemplaza con tu instagram -->
+<a href="#" target="_blank">
+Instagram
+</a>
+
 </section>
 
 <footer>
-  © 2026 Juan Díaz
+© 2026 Juan Díaz
 </footer>
-
-<script>
-// empezar video en segundo 40
-const video = document.getElementById("heroVideo");
-video.addEventListener("loadedmetadata", () => {
-  video.currentTime = 40;
-});
-</script>
 
 </body>
 </html>
