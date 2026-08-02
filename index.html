@@ -21,8 +21,17 @@ background:rgba(0,0,0,0.85);
 z-index:1000;
 }
 
-nav ul{display:flex;gap:20px;list-style:none;}
-nav a{color:white;text-decoration:none;font-size:14px;}
+nav ul{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:14px;
+}
 
 /* HERO */
 .hero{
@@ -78,6 +87,7 @@ section{padding:80px 10%;}
 
 /* SERVICES */
 .services{text-align:center;}
+
 .service-grid{
 display:flex;
 justify-content:center;
@@ -94,10 +104,16 @@ text-align:center;
 }
 
 .about h2{font-size:35px;margin-bottom:20px;}
-.about p{opacity:0.7;line-height:1.6;margin-bottom:15px;}
+
+.about p{
+opacity:0.7;
+line-height:1.6;
+margin-bottom:15px;
+}
 
 /* PORTFOLIO */
 .portfolio h2{margin-bottom:40px;}
+
 .category{margin-bottom:60px;}
 
 .grid{
@@ -113,9 +129,7 @@ border:none;
 }
 
 /* CONTACT */
-.contact{
-text-align:center;
-}
+.contact{text-align:center;}
 
 .contact h2{margin-bottom:30px;}
 
@@ -134,6 +148,62 @@ text-align:center;
 padding:40px;
 opacity:0.5;
 }
+
+/* 📱 MOBILE */
+@media (max-width:768px){
+
+nav{
+flex-direction:column;
+align-items:center;
+gap:10px;
+padding:10px;
+}
+
+nav ul{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero{
+height:60vh;
+}
+
+.hero-content{
+padding-left:20px;
+padding-right:20px;
+}
+
+.hero h1{
+font-size:30px;
+}
+
+.hero p{
+font-size:14px;
+}
+
+.hero button{
+width:100%;
+}
+
+.service-grid{
+flex-direction:column;
+gap:20px;
+}
+
+.about{
+padding:60px 20px;
+}
+
+section{
+padding:60px 20px;
+}
+
+iframe{
+height:200px;
+}
+
+}
+
 </style>
 </head>
 
@@ -195,8 +265,7 @@ una estética definida y una ejecución precisa.
 
 <p>
 En un entorno saturado de contenido, mi enfoque es simple: destacar. 
-Construyo imágenes que atrapan, ritmos que mantienen y resultados que funcionan, 
-ya sea para artistas, marcas o proyectos comerciales.
+Construyo imágenes que atrapan, ritmos que mantienen y resultados que funcionan.
 </p>
 
 <p>
@@ -243,10 +312,9 @@ en la mente de quien lo ve.
 <a href="mailto:juanbiazp95@gmail.com">Enviar correo</a>
 
 <a href="https://wa.me/573026206880" target="_blank">
-Escribir por WhatsApp
+WhatsApp
 </a>
 
-<!-- reemplaza con tu instagram -->
 <a href="#" target="_blank">
 Instagram
 </a>
