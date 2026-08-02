@@ -12,7 +12,7 @@
 body{background:#000;color:#fff;cursor:none;}
 html{scroll-behavior:smooth;}
 
-/* LOADER */
+/* LOADER (LOGO) */
 .loader{
 position:fixed;
 inset:0;
@@ -205,12 +205,15 @@ transition:.3s;
 
 /* CEOs */
 .ceos{
-margin-top:40px;
+margin-top:60px;
 display:flex;
 justify-content:center;
 gap:60px;
 flex-wrap:wrap;
 text-align:center;
+}
+.ceo{
+cursor:pointer;
 }
 .ceo img{
 width:120px;
@@ -218,21 +221,34 @@ height:120px;
 border-radius:50%;
 object-fit:cover;
 border:2px solid rgba(255,255,255,0.3);
+transition:.3s;
 }
-.ceo p{color:#fff;}
-
-/* NUEVO TITULO */
-.ceo-title{
-margin-top:60px;
-font-size:22px;
-letter-spacing:1px;
+.ceo img:hover{
+transform:scale(1.05);
+border-color:#fff;
+}
+.ceo p{
+margin-top:10px;
+font-size:14px;
+}
+.ceo span{
+font-size:12px;
+opacity:0.7;
 }
 
+/* MOBILE */
+@media(max-width:768px){
+.hero iframe{width:100vw;height:56.25vw;}
+.brand{font-size:32px;}
+.about{flex-direction:column;}
+section{padding:70px 8%;}
+}
 </style>
 </head>
 
 <body>
 
+<!-- LOADER -->
 <div class="loader">
 <img src="https://i.ibb.co/FLhbXwjp/MED-COLOR-BLANCO.png">
 </div>
@@ -250,7 +266,7 @@ letter-spacing:1px;
 </nav>
 
 <section class="hero">
-<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1#t=40s"></iframe>
+<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1"></iframe>
 <div class="overlay"></div>
 
 <div class="hero-content">
@@ -261,7 +277,98 @@ letter-spacing:1px;
 </div>
 </section>
 
-<!-- TODO TU CONTENIDO ORIGINAL SIGUE IGUAL -->
+<!-- SERVICES -->
+<section id="services">
+<h2 class="reveal">Servicios</h2>
+
+<div class="services-grid">
+
+<div class="service-box reveal">
+<h3>Contenido para marcas</h3>
+<small>Aquí vive todo lo comercial</small>
+<ul>
+<li>Contenido para redes (reels, piezas cortas)</li>
+<li>Campañas publicitarias</li>
+<li>Fashion films</li>
+<li>Contenido editorial</li>
+<li>Activaciones de marcas</li>
+</ul>
+<div class="enfoque">Enfoque: posicionamiento + estética + impacto</div>
+</div>
+
+<div class="service-box reveal">
+<h3>Contenido corporativo</h3>
+<small>Empresas serias / industria</small>
+<ul>
+<li>Videos institucionales</li>
+<li>Procesos industriales</li>
+<li>Cultura empresarial</li>
+<li>Presentaciones de empresa</li>
+</ul>
+<div class="enfoque">Enfoque: claridad + confianza + profesionalismo</div>
+</div>
+
+<div class="service-box reveal">
+<h3>Contenido artístico</h3>
+<small>Artistas, música, proyectos creativos</small>
+<ul>
+<li>Videoclips</li>
+<li>Teasers y piezas creativas</li>
+<li>Documentales / perfiles</li>
+<li>Proyectos visuales</li>
+</ul>
+<div class="enfoque">Enfoque: identidad + narrativa + estética</div>
+</div>
+
+<div class="service-box reveal">
+<h3>Eventos y experiencias</h3>
+<small>Cobertura, contenido en tiempo real y amplificación</small>
+<ul>
+<li>Cobertura de eventos</li>
+<li>Contenido en tiempo real</li>
+<li>Piezas post-evento</li>
+<li>Activaciones de marca</li>
+</ul>
+<div class="enfoque">Enfoque: visibilidad + amplificación</div>
+</div>
+
+</div>
+</section>
+
+<section id="about" class="about reveal">
+<img src="https://i.ibb.co/DgMfWBqN/IMG-0508.jpg">
+<div class="about-text">
+<h2>Sobre nosotros</h2>
+<p>(Este texto lo editas tú luego)</p>
+</div>
+</section>
+
+<section class="reveal">
+<div class="gallery">
+<img src="https://i.ibb.co/d0P2QtJB/IMG-5758.jpg">
+<img src="https://i.ibb.co/1GfjNGt5/IMG-5755.jpg">
+<img src="https://i.ibb.co/GvyDWjHK/IMG-3531.jpg">
+<img src="https://i.ibb.co/xSKhH4Sq/IMG-3535.jpg">
+<img src="https://i.ibb.co/99M8xfyt/IMG-9481.jpg">
+<img src="https://i.ibb.co/mVwk9nrm/IMG-9972.jpg">
+</div>
+</section>
+
+<section id="portfolio" class="portfolio reveal">
+<h2>Portafolio</h2>
+
+<h3>Videoclips</h3>
+<iframe src="https://player.vimeo.com/video/1183887876"></iframe>
+<iframe src="https://player.vimeo.com/video/1062974250"></iframe>
+<iframe src="https://player.vimeo.com/video/1062971665"></iframe>
+<iframe src="https://player.vimeo.com/video/1034642854"></iframe>
+
+<h3>Eventos</h3>
+<iframe src="https://player.vimeo.com/video/1032576795"></iframe>
+
+<h3>Marcas</h3>
+<iframe src="https://player.vimeo.com/video/1183939530"></iframe>
+</section>
 
 <section id="contact" class="contact reveal">
 <h2>Contacto</h2>
@@ -271,27 +378,30 @@ letter-spacing:1px;
 <a href="https://wa.me/573026206880" target="_blank">WhatsApp</a>
 </div>
 
-<h3 class="ceo-title">Dirección Creativa</h3>
-
+<!-- CEOs -->
 <div class="ceos">
-<a href="#" class="ceo">
+
+<a href="https://instagram.com/" target="_blank" class="ceo">
 <img src="https://via.placeholder.com/300">
 <p>Juan Díaz<br><span>Productor audiovisual</span></p>
 </a>
 
-<a href="#" class="ceo">
+<a href="https://instagram.com/" target="_blank" class="ceo">
 <img src="https://via.placeholder.com/300">
 <p>Diego Ospina<br><span>Productor audiovisual</span></p>
 </a>
+
 </div>
 
 </section>
 
 <script>
+// LOADER
 window.addEventListener("load",()=>{
 setTimeout(()=>document.querySelector(".loader").classList.add("hidden"),1200);
 });
 
+// SCROLL
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -301,10 +411,16 @@ entry.target.classList.add('active');
 },{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
+// CURSOR
 const cursor=document.querySelector('.cursor');
 window.addEventListener('mousemove',e=>{
 cursor.style.top=e.clientY+'px';
 cursor.style.left=e.clientX+'px';
+});
+
+document.querySelectorAll('a').forEach(el=>{
+el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
+el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
 });
 </script>
 
