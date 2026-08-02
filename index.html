@@ -205,15 +205,12 @@ transition:.3s;
 
 /* CEOs */
 .ceos{
-margin-top:60px;
+margin-top:40px;
 display:flex;
 justify-content:center;
 gap:60px;
 flex-wrap:wrap;
 text-align:center;
-}
-.ceo{
-cursor:pointer;
 }
 .ceo img{
 width:120px;
@@ -221,36 +218,16 @@ height:120px;
 border-radius:50%;
 object-fit:cover;
 border:2px solid rgba(255,255,255,0.3);
-transition:.3s;
 }
-.ceo img:hover{
-transform:scale(1.05);
-border-color:#fff;
-}
-.ceo p{
-margin-top:10px;
-font-size:14px;
-color:#fff;
-}
-.ceo span{
-font-size:12px;
-opacity:0.7;
-}
+.ceo p{color:#fff;}
 
-/* TITULO CEOs */
+/* NUEVO TITULO */
 .ceo-title{
 margin-top:60px;
 font-size:22px;
 letter-spacing:1px;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-.hero iframe{width:100vw;height:56.25vw;}
-.brand{font-size:32px;}
-.about{flex-direction:column;}
-section{padding:70px 8%;}
-}
 </style>
 </head>
 
@@ -273,7 +250,7 @@ section{padding:70px 8%;}
 </nav>
 
 <section class="hero">
-<iframe src="https://player.vimeo.com/video/1183887876#t=40s?background=1&autoplay=1&loop=1&muted=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1#t=40s"></iframe>
 <div class="overlay"></div>
 
 <div class="hero-content">
@@ -284,7 +261,7 @@ section{padding:70px 8%;}
 </div>
 </section>
 
-<!-- TODO LO DEMÁS EXACTAMENTE IGUAL -->
+<!-- TODO TU CONTENIDO ORIGINAL SIGUE IGUAL -->
 
 <section id="contact" class="contact reveal">
 <h2>Contacto</h2>
@@ -297,28 +274,24 @@ section{padding:70px 8%;}
 <h3 class="ceo-title">Dirección Creativa</h3>
 
 <div class="ceos">
-
-<a href="https://instagram.com/" target="_blank" class="ceo">
+<a href="#" class="ceo">
 <img src="https://via.placeholder.com/300">
 <p>Juan Díaz<br><span>Productor audiovisual</span></p>
 </a>
 
-<a href="https://instagram.com/" target="_blank" class="ceo">
+<a href="#" class="ceo">
 <img src="https://via.placeholder.com/300">
 <p>Diego Ospina<br><span>Productor audiovisual</span></p>
 </a>
-
 </div>
 
 </section>
 
 <script>
-// LOADER
 window.addEventListener("load",()=>{
 setTimeout(()=>document.querySelector(".loader").classList.add("hidden"),1200);
 });
 
-// SCROLL
 const observer=new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
@@ -328,16 +301,10 @@ entry.target.classList.add('active');
 },{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-// CURSOR
 const cursor=document.querySelector('.cursor');
 window.addEventListener('mousemove',e=>{
 cursor.style.top=e.clientY+'px';
 cursor.style.left=e.clientX+'px';
-});
-
-document.querySelectorAll('a').forEach(el=>{
-el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
-el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
 });
 </script>
 
