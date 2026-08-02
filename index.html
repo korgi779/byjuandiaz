@@ -22,7 +22,7 @@ body {
   color: #fff;
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
   position: fixed;
   width: 100%;
@@ -30,45 +30,41 @@ nav {
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   background: rgba(0,0,0,0.7);
   backdrop-filter: blur(10px);
   z-index: 1000;
-}
-
-nav h1 {
-  font-size: 18px;
 }
 
 nav a {
   color: #fff;
   margin-left: 20px;
   text-decoration: none;
-  font-size: 14px;
 }
 
 /* HERO */
 .hero {
-  height: 75vh;
+  height: 65vh;
   position: relative;
   overflow: hidden;
 }
 
-.hero video {
+.hero iframe {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  pointer-events: none;
+}
+
+.overlay {
   position: absolute;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), #000);
 }
 
-.hero .overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.2), #000);
-}
-
-.hero .content {
+.hero-content {
   position: relative;
   z-index: 2;
   height: 100%;
@@ -79,40 +75,38 @@ nav a {
 }
 
 .hero h2 {
-  font-size: 42px;
-}
-
-.hero p {
-  margin-top: 10px;
-  color: #ccc;
+  font-size: 40px;
 }
 
 .btn {
   margin-top: 20px;
-  display: inline-block;
-  padding: 10px 20px;
   border: 1px solid #fff;
+  padding: 10px 20px;
   text-decoration: none;
   color: #fff;
-  font-size: 14px;
+  width: fit-content;
 }
 
 /* SECTIONS */
 section {
-  padding: 80px 10%;
+  padding: 100px 10%;
 }
 
 /* SERVICES */
+#services h2 {
+  margin-bottom: 40px;
+}
+
 .services {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 30px;
-  text-align: center;
+  gap: 25px;
 }
 
 .services div {
   border: 1px solid #333;
-  padding: 20px;
+  padding: 25px;
+  text-align: center;
 }
 
 /* ABOUT */
@@ -126,6 +120,7 @@ section {
 .about img {
   width: 100%;
   max-width: 400px;
+  object-fit: cover;
 }
 
 .about-text {
@@ -136,42 +131,67 @@ section {
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 15px;
+  gap: 10px;
 }
 
 .gallery img {
   width: 100%;
-  height: 100%;
+  height: 250px;
   object-fit: cover;
 }
 
 /* PORTFOLIO */
 .portfolio iframe {
   width: 100%;
-  height: 300px;
+  height: 280px;
+  margin-bottom: 25px;
   border: none;
-  margin-bottom: 20px;
 }
 
 /* CONTACT */
-.contact a {
-  display: block;
-  margin: 10px 0;
+.contact {
+  text-align: center;
+}
+
+.contact-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.contact-buttons a {
+  border: 1px solid #fff;
+  padding: 10px 18px;
+  text-decoration: none;
   color: #fff;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.contact-buttons a:hover {
+  background: #fff;
+  color: #000;
 }
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  .hero h2 {
-    font-size: 28px;
-  }
 
   nav {
     padding: 15px 20px;
   }
 
+  .hero h2 {
+    font-size: 28px;
+  }
+
   .about {
     flex-direction: column;
+  }
+
+  section {
+    padding: 70px 8%;
   }
 }
 </style>
@@ -179,9 +199,8 @@ section {
 
 <body>
 
-<!-- NAV -->
 <nav>
-  <h1>Juan Díaz</h1>
+  <div>Juan Díaz</div>
   <div>
     <a href="#about">Sobre mí</a>
     <a href="#services">Servicios</a>
@@ -190,23 +209,25 @@ section {
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO LOOP (VIMEO CORRECTO) -->
 <section class="hero">
-  <video autoplay muted loop playsinline id="heroVideo">
-    <source src="https://player.vimeo.com/progressive_redirect/playback/1183887876/rendition/720p/file.mp4" type="video/mp4">
-  </video>
-  <div class="overlay"></div>
 
-  <div class="content">
-    <h2>Juan Díaz</h2>
-    <p>Productor audiovisual</p>
-    <a href="#portfolio" class="btn">Ver portafolio</a>
-  </div>
+<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1#t=40s" frameborder="0" allow="autoplay; fullscreen"></iframe>
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+  <h2>Juan Díaz</h2>
+  <p>Productor audiovisual</p>
+  <a href="#portfolio" class="btn">Ver portafolio</a>
+</div>
+
 </section>
 
 <!-- SERVICES -->
 <section id="services">
   <h2>Servicios</h2>
+
   <div class="services">
     <div>Dirección & Producción</div>
     <div>Edición de Video</div>
@@ -217,69 +238,74 @@ section {
 
 <!-- ABOUT -->
 <section id="about" class="about">
-  <img src="/mnt/data/file_00000000e198820e9a15e3a73ea102e5" alt="">
-  
-  <div class="about-text">
-    <h2>Sobre mí</h2>
-    <p>
-      Creo contenido que compite y gana atención.  
-      Soy productor audiovisual, director y editor enfocado en desarrollar piezas que conectan rápido y permanecen.
-      <br><br>
-      No trabajo desde lo genérico: cada proyecto tiene intención, estética y ejecución precisa.
-      <br><br>
-      En un entorno saturado, mi enfoque es simple: destacar.
-    </p>
-  </div>
+
+<img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="">
+
+<div class="about-text">
+<h2>Sobre mí</h2>
+<p>
+Creo contenido que compite y gana atención.  
+Soy productor audiovisual, director y editor enfocado en desarrollar piezas que conectan rápido y permanecen.
+<br><br>
+No trabajo desde lo genérico: cada proyecto tiene intención, estética y ejecución precisa.
+<br><br>
+En un entorno saturado, mi enfoque es simple: destacar.
+</p>
+</div>
+
 </section>
 
 <!-- GALLERY -->
 <section>
-  <div class="gallery">
-    <img src="/mnt/data/file_0000000036dc820eb7b1bace2c5c9c21">
-    <img src="/mnt/data/file_000000003210820ea3f3c3fa98108ef8">
-    <img src="/mnt/data/file_000000008570820e96e5aa426772ca25">
-    <img src="/mnt/data/file_00000000e244820eaece46f80c877605">
-  </div>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+<img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913">
+<img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32">
+<img src="https://images.unsplash.com/photo-1526178613658-3f1622045557">
+</div>
 </section>
 
 <!-- PORTFOLIO -->
 <section id="portfolio" class="portfolio">
-  <h2>Portafolio</h2>
 
-  <h3>Videoclips</h3>
-  <iframe src="https://player.vimeo.com/video/1183887876"></iframe>
-  <iframe src="https://player.vimeo.com/video/1062974250"></iframe>
-  <iframe src="https://player.vimeo.com/video/1062971665"></iframe>
-  <iframe src="https://player.vimeo.com/video/1034642854"></iframe>
+<h2>Portafolio</h2>
 
-  <h3>Eventos</h3>
-  <iframe src="https://player.vimeo.com/video/1032576795"></iframe>
+<h3>Videoclips</h3>
+<iframe src="https://player.vimeo.com/video/1183887876"></iframe>
+<iframe src="https://player.vimeo.com/video/1062974250"></iframe>
+<iframe src="https://player.vimeo.com/video/1062971665"></iframe>
+<iframe src="https://player.vimeo.com/video/1034642854"></iframe>
 
-  <h3>Marcas</h3>
-  <iframe src="https://player.vimeo.com/video/1183939530"></iframe>
+<h3>Eventos</h3>
+<iframe src="https://player.vimeo.com/video/1032576795"></iframe>
+
+<h3>Marcas</h3>
+<iframe src="https://player.vimeo.com/video/1183939530"></iframe>
 
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
-  <h2>Contacto</h2>
 
-  <a href="mailto:juanbiazp95@gmail.com">juanbiazp95@gmail.com</a>
+<h2>Contacto</h2>
 
-  <a href="https://wa.me/573026206880" target="_blank">
-    WhatsApp: +57 302 620 6880
-  </a>
+<div class="contact-buttons">
 
-  <a href="#" target="_blank">Instagram</a>
+<a href="mailto:juanbiazp95@gmail.com">
+Correo
+</a>
+
+<a href="https://wa.me/573026206880" target="_blank">
+WhatsApp
+</a>
+
+<a href="#" target="_blank">
+Instagram
+</a>
+
+</div>
+
 </section>
-
-<script>
-// INICIAR VIDEO DESDE SEGUNDO 40
-const video = document.getElementById("heroVideo");
-video.addEventListener("loadedmetadata", () => {
-  video.currentTime = 40;
-});
-</script>
 
 </body>
 </html>
