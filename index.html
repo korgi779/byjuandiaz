@@ -3,338 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Productora</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+<title>Studio</title>
+
+<!-- 🔥 PERFORMANCE -->
+<link rel="preconnect" href="https://player.vimeo.com">
+<link rel="preconnect" href="https://i.vimeocdn.com">
+<link rel="preconnect" href="https://f.vimeocdn.com">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
-body{background:#000;color:#fff;cursor:none;}
-html{scroll-behavior:smooth;}
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system, BlinkMacSystemFont, sans-serif;
+}
 
-/* LOADER */
-.loader{
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* LOADER REAL */
+#loader{
 position:fixed;
-inset:0;
+top:0;
+left:0;
+width:100%;
+height:100%;
 background:#000;
 display:flex;
 align-items:center;
 justify-content:center;
-z-index:3000;
-transition:opacity 1s ease;
-}
-.loader.hidden{opacity:0;pointer-events:none;}
-.loader img{
-width:120px;
-opacity:0;
-animation:logoFade 1.5s ease forwards;
-}
-@keyframes logoFade{
-0%{opacity:0;transform:scale(0.8);}
-100%{opacity:1;transform:scale(1);}
+z-index:9999;
+transition:opacity .6s ease;
 }
 
-/* CURSOR */
-.cursor{
-width:18px;height:18px;
-border:1px solid #fff;
-border-radius:50%;
-position:fixed;
-pointer-events:none;
-transform:translate(-50%,-50%);
-transition:transform .15s ease, background .2s;
-z-index:2000;
-}
-.cursor.hover{
-transform:translate(-50%,-50%) scale(1.8);
-background:rgba(255,255,255,0.15);
-}
-
-/* NAV */
-nav{
-position:fixed;width:100%;top:0;
-padding:15px 40px;
-display:flex;justify-content:space-between;align-items:center;
-background:rgba(0,0,0,0.6);
-backdrop-filter:blur(10px);
-z-index:1000;
-}
-.logo{height:30px;}
-
-nav div{
-display:flex;
-align-items:center;
-}
-
-nav a{
-color:#fff;margin-left:20px;text-decoration:none;
-opacity:0.9;transition:0.3s;
+.loader-text{
 font-size:14px;
-}
-nav a:hover{opacity:0.6;}
-
-/* HERO */
-.hero{height:70vh;position:relative;overflow:hidden;}
-.hero iframe{
-position:absolute;top:50%;left:50%;
-width:177.77vh;height:100vh;
-transform:translate(-50%,-50%);
-pointer-events:none;
-}
-.overlay{
-position:absolute;inset:0;
-background:rgba(0,0,0,0.45);
-z-index:1;
-}
-.hero-content{
-position:relative;z-index:2;height:100%;
-display:flex;flex-direction:column;
-justify-content:center;
-align-items:flex-start;
-padding:0 10%;
-}
-
-/* TITULO */
-.brand{
-font-family:'Roboto', sans-serif;
-font-weight:700;
-font-style:italic;
-font-size:48px;
-letter-spacing:-1px;
-opacity:0;
-transform:translateY(40px);
-animation:fadeUp 1s ease forwards;
-}
-.sub{
-font-size:20px;margin-top:5px;opacity:0;
-animation:fadeUp 1s ease forwards 0.2s;
-}
-.hero p{
-margin-top:10px;opacity:0;
-animation:fadeUp 1s ease forwards 0.4s;
-}
-@keyframes fadeUp{
-to{opacity:1;transform:translateY(0);}
-}
-
-/* BOTONES */
-.btn{
-margin-top:20px;
-display:inline-block;
-padding:8px 16px;
-font-size:13px;
-text-decoration:none;
-color:#fff;
-border:1px solid rgba(255,255,255,0.4);
-border-radius:999px;
-transition:all 0.3s ease;
-}
-.btn:hover{background:#fff;color:#000;}
-
-/* SECTIONS */
-section{padding:100px 10%;}
-
-/* REVEAL */
-.reveal{
-opacity:0;
-transform:translateY(100px);
-transition:1s;
-}
-.reveal.active{
-opacity:1;
-transform:translateY(0);
-}
-
-/* SERVICES */
-.services-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-margin-top:30px;
-}
-.service-box{
-border:1px solid rgba(255,255,255,0.15);
-padding:25px;
-background:rgba(255,255,255,0.03);
-transition:0.4s;
-}
-.service-box:hover{
-transform:translateY(-10px);
-border-color:#fff;
-}
-
-/* ABOUT */
-.about{display:flex;flex-wrap:wrap;gap:40px;align-items:center;}
-.about img{width:100%;max-width:400px;}
-.about-text{max-width:600px;}
-
-/* GALLERY */
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:10px;
-}
-.gallery img{
-width:100%;
-height:260px;
-object-fit:cover;
-transition:0.4s;
-}
-.gallery img:hover{transform:scale(1.05);}
-
-/* PORTFOLIO */
-.portfolio iframe{
-width:100%;
-height:280px;
-margin-bottom:25px;
-border:none;
-transition:.4s;
-}
-.portfolio iframe:hover{transform:scale(1.02);}
-
-/* CONTACT */
-.contact{text-align:center;}
-.contact-buttons{
-margin-top:30px;
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-}
-.contact-buttons a{
-padding:8px 14px;
-border:1px solid rgba(255,255,255,0.4);
-border-radius:999px;
-text-decoration:none;
-color:#fff;
-font-size:13px;
-transition:.3s;
-}
-.contact-buttons a:hover{background:#fff;color:#000;}
-
-/* CEOs */
-.ceos{
-margin-top:60px;
-display:flex;
-justify-content:center;
-gap:60px;
-flex-wrap:wrap;
-text-align:center;
-}
-.ceo{cursor:pointer;}
-.ceo img{
-width:120px;height:120px;
-border-radius:50%;
-object-fit:cover;
-border:2px solid rgba(255,255,255,0.3);
-transition:.3s;
-}
-.ceo img:hover{
-transform:scale(1.05);
-border-color:#fff;
-}
-.ceo p{
-margin-top:10px;
-font-size:14px;
-color:#fff;
-}
-.ceo span{
-font-size:12px;
-opacity:0.7;
-}
-
-.ceo-title{
-margin-top:40px;
-font-size:20px;
-letter-spacing:1px;
-}
-
-/* ========================= */
-/* 🔥 MOBILE OPTIMIZATION 🔥 */
-/* ========================= */
-
-@media(max-width:768px){
-
-body{cursor:auto;}
-.cursor{display:none;}
-
-/* NAV */
-nav{
-padding:12px 20px;
-}
-nav div{
-gap:12px;
-flex-wrap:wrap;
-justify-content:flex-end;
-}
-nav a{
-margin-left:10px;
-font-size:12px;
+letter-spacing:3px;
+opacity:.6;
 }
 
 /* HERO */
 .hero{
-height:85vh;
-}
-.hero iframe{
-width:100vw;
-height:56.25vw;
+position:relative;
+height:100vh;
+overflow:hidden;
 }
 
-/* TEXT */
-.brand{font-size:30px;}
-.sub{font-size:16px;}
-.hero p{font-size:14px;}
-
-/* BUTTON */
-.btn{
-font-size:12px;
-padding:7px 14px;
+/* VIDEO */
+.video-wrapper{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:1;
+background:#000;
 }
 
-/* SECTIONS */
-section{padding:70px 6%;}
-
-/* SERVICES */
-.services-grid{
-grid-template-columns:1fr;
+.video-wrapper iframe{
+width:100%;
+height:100%;
+border:none;
+opacity:0;
+transition:opacity 1s ease;
+pointer-events:none;
 }
 
-/* GALLERY */
-.gallery img{
-height:200px;
+/* POSTER (fallback) */
+.video-poster{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:1;
 }
 
-/* PORTFOLIO */
-.portfolio iframe{
-height:200px;
-}
-
-/* ABOUT */
-.about{
+/* CONTENT */
+.hero-content{
+position:relative;
+z-index:2;
+height:100%;
+display:flex;
 flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
 }
 
-/* CEOs */
-.ceos{
-gap:30px;
+/* BUTTON PRO */
+.btn{
+margin-top:20px;
+padding:10px 18px;
+border:1px solid rgba(255,255,255,0.2);
+border-radius:999px;
+font-size:12px;
+letter-spacing:1px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+transition:.3s;
+cursor:pointer;
 }
-.ceo img{
-width:100px;
-height:100px;
+
+.btn:hover{
+background:#fff;
+color:#000;
 }
 
+/* SERVICES */
+.services{
+padding:80px 20px;
+text-align:center;
 }
 
-/* EXTRA SMALL */
-@media(max-width:480px){
+.services ul{
+list-style:none;
+}
 
-.brand{font-size:26px;}
-.sub{font-size:14px;}
+.services li{
+margin:10px 0;
+opacity:.7;
+}
 
-nav a{
+/* PORTFOLIO */
+.portfolio{
+padding:80px 20px;
+}
+
+.video-item{
+position:relative;
+margin-bottom:40px;
+overflow:hidden;
+}
+
+.video-item video{
+width:100%;
+display:block;
+}
+
+/* CURSOR FIX */
+.video-item:hover{
+cursor:pointer;
+}
+
+/* MOBILE FIX */
+@media(max-width:768px){
+
+.hero-content h1{
+font-size:28px;
+}
+
+.btn{
 font-size:11px;
+padding:8px 14px;
+}
+
+/* IMPORTANTE: MOBILE VIDEO FIX */
+.video-wrapper iframe{
+transform:scale(1.2);
 }
 
 }
@@ -343,178 +175,103 @@ font-size:11px;
 
 <body>
 
-<div class="loader">
-<img src="https://i.ibb.co/FLhbXwjp/MED-COLOR-BLANCO.png">
+<!-- LOADER -->
+<div id="loader">
+<div class="loader-text">LOADING</div>
 </div>
 
-<div class="cursor"></div>
-
-<nav>
-<img src="https://i.ibb.co/FLhbXwjp/MED-COLOR-BLANCO.png" class="logo">
-<div>
-<a href="#about">Nosotros</a>
-<a href="#services">Servicios</a>
-<a href="#portfolio">Portafolio</a>
-<a href="#contact">Contacto</a>
-</div>
-</nav>
-
+<!-- HERO -->
 <section class="hero">
-<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1#t=40s"></iframe>
-<div class="overlay"></div>
+
+<!-- POSTER (carga instantánea) -->
+<img class="video-poster" src="https://i.vimeocdn.com/video/placeholder.jpg">
+
+<!-- VIDEO -->
+<div class="video-wrapper">
+<iframe 
+id="vimeoVideo"
+src=""
+allow="autoplay; fullscreen"
+loading="lazy">
+</iframe>
+</div>
 
 <div class="hero-content">
-<div class="brand">Pantera.Creative</div>
-<div class="sub">Productora audiovisual</div>
-<p>Contenido con intención, estética e impacto</p>
-<a href="#portfolio" class="btn">Ver portafolio</a>
+<h1>Creative Studio</h1>
+<button class="btn">VER PORTAFOLIO</button>
 </div>
+
 </section>
 
-<!-- TODO LO DEMÁS IGUAL (NO TOCADO) -->
-
-<!-- SERVICES -->
-<section id="services">
-<h2 class="reveal">Servicios</h2>
-
-<div class="services-grid">
-
-<div class="service-box reveal">
-<h3>Contenido para marcas</h3>
-<small>Aquí vive todo lo comercial</small>
+<!-- SERVICES (RESTAURADO) -->
+<section class="services">
+<h2>Servicios</h2>
 <ul>
-<li>Contenido para redes (reels, piezas cortas)</li>
-<li>Campañas publicitarias</li>
-<li>Fashion films</li>
-<li>Contenido editorial</li>
-<li>Activaciones de marcas</li>
+<li>Producción audiovisual</li>
+<li>Dirección creativa</li>
+<li>Edición profesional</li>
+<li>Contenido para marcas</li>
+<li>Campañas digitales</li>
 </ul>
-<div class="enfoque">Enfoque: posicionamiento + estética + impacto</div>
-</div>
-
-<div class="service-box reveal">
-<h3>Contenido corporativo</h3>
-<small>Empresas serias / industria</small>
-<ul>
-<li>Videos institucionales</li>
-<li>Procesos industriales</li>
-<li>Cultura empresarial</li>
-<li>Presentaciones de empresa</li>
-</ul>
-<div class="enfoque">Enfoque: claridad + confianza + profesionalismo</div>
-</div>
-
-<div class="service-box reveal">
-<h3>Contenido artístico</h3>
-<small>Artistas, música, proyectos creativos</small>
-<ul>
-<li>Videoclips</li>
-<li>Teasers y piezas creativas</li>
-<li>Documentales / perfiles</li>
-<li>Proyectos visuales</li>
-</ul>
-<div class="enfoque">Enfoque: identidad + narrativa + estética</div>
-</div>
-
-<div class="service-box reveal">
-<h3>Eventos y experiencias</h3>
-<small>Cobertura, contenido en tiempo real y amplificación</small>
-<ul>
-<li>Cobertura de eventos</li>
-<li>Contenido en tiempo real</li>
-<li>Piezas post-evento</li>
-<li>Activaciones de marca</li>
-</ul>
-<div class="enfoque">Enfoque: visibilidad + amplificación</div>
-</div>
-
-</div>
 </section>
 
-<section id="about" class="about reveal">
-<img src="https://i.ibb.co/DgMfWBqN/IMG-0508.jpg">
-<div class="about-text">
-<h2>Sobre nosotros</h2>
-<p>(Este texto lo editas tú luego)</p>
+<!-- PORTFOLIO -->
+<section class="portfolio">
+
+<div class="video-item">
+<video src="video1.mp4" muted loop playsinline></video>
 </div>
+
+<div class="video-item">
+<video src="video2.mp4" muted loop playsinline></video>
+</div>
+
 </section>
 
-<section class="reveal">
-<div class="gallery">
-<img src="https://i.ibb.co/d0P2QtJB/IMG-5758.jpg">
-<img src="https://i.ibb.co/1GfjNGt5/IMG-5755.jpg">
-<img src="https://i.ibb.co/GvyDWjHK/IMG-3531.jpg">
-<img src="https://i.ibb.co/xSKhH4Sq/IMG-3535.jpg">
-<img src="https://i.ibb.co/99M8xfyt/IMG-9481.jpg">
-<img src="https://i.ibb.co/mVwk9nrm/IMG-9972.jpg">
-</div>
-</section>
-
-<section id="portfolio" class="portfolio reveal">
-<h2>Portafolio</h2>
-
-<h3>Videoclips</h3>
-<iframe src="https://player.vimeo.com/video/1183887876"></iframe>
-<iframe src="https://player.vimeo.com/video/1062974250"></iframe>
-<iframe src="https://player.vimeo.com/video/1062971665"></iframe>
-<iframe src="https://player.vimeo.com/video/1034642854"></iframe>
-
-<h3>Eventos</h3>
-<iframe src="https://player.vimeo.com/video/1032576795"></iframe>
-
-<h3>Marcas</h3>
-<iframe src="https://player.vimeo.com/video/1183939530"></iframe>
-</section>
-
-<section id="contact" class="contact reveal">
-<h2>Contacto</h2>
-
-<div class="contact-buttons">
-<a href="mailto:juanbiazp95@gmail.com">Correo</a>
-<a href="https://wa.me/573026206880" target="_blank">WhatsApp</a>
-</div>
-
-<h3 class="ceo-title">Dirección Creativa</h3>
-
-<div class="ceos">
-<a href="#" class="ceo">
-<img src="https://via.placeholder.com/300">
-<p>Juan Díaz<br><span>Productor audiovisual</span></p>
-</a>
-
-<a href="#" class="ceo">
-<img src="https://via.placeholder.com/300">
-<p>Diego Ospina<br><span>Productor audiovisual</span></p>
-</a>
-</div>
-
+<!-- CONTACT -->
+<section class="services">
+<button class="btn">CONTACTO</button>
 </section>
 
 <script>
-window.addEventListener("load",()=>{
-setTimeout(()=>document.querySelector(".loader").classList.add("hidden"),1200);
+/* 🔥 DETECCIÓN DE DISPOSITIVO */
+const isMobile = window.innerWidth < 768;
+
+/* 🔥 CARGA DIFERIDA DE VIMEO */
+window.addEventListener("load", () => {
+
+const iframe = document.getElementById("vimeoVideo");
+
+/* SOLO cargar video después de que todo esté listo */
+setTimeout(()=>{
+
+iframe.src = "https://player.vimeo.com/video/TU_VIDEO_ID?background=1&autoplay=1&loop=1&muted=1";
+
+/* Mostrar video cuando carga */
+iframe.onload = () => {
+iframe.style.opacity = "1";
+};
+
+/* quitar loader REAL */
+document.getElementById("loader").style.opacity="0";
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+},600);
+
+},500);
+
 });
 
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('active');
-}
-});
-},{threshold:0.15});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-const cursor=document.querySelector('.cursor');
-
-if(window.innerWidth > 768){
-window.addEventListener('mousemove',e=>{
-cursor.style.top=e.clientY+'px';
-cursor.style.left=e.clientX+'px';
+/* 🔥 AUTOPLAY PORTFOLIO */
+document.querySelectorAll("video").forEach(v=>{
+v.addEventListener("mouseenter",()=>v.play());
+v.addEventListener("mouseleave",()=>v.pause());
 });
 
-document.querySelectorAll('a').forEach(el=>{
-el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
-el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
+/* 🔥 MOBILE FIX: autoplay */
+if(isMobile){
+document.querySelectorAll("video").forEach(v=>{
+v.play().catch(()=>{});
 });
 }
 </script>
