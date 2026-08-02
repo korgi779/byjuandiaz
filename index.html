@@ -1,1 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Productora</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+body{background:#000;color:#fff;cursor:none;}
+html{scroll-behavior:smooth;}
+
+/* LOADER */
+.loader{
+position:fixed;
+inset:0;
+background:#000;
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:3000;
+transition:opacity 1s ease;
+}
+.loader.hidden{opacity:0;pointer-events:none;}
+.loader img{
+width:120px;
+opacity:0;
+animation:logoFade 1.5s ease forwards;
+}
+@keyframes logoFade{
+0%{opacity:0;transform:scale(0.8);}
+100%{opacity:1;transform:scale(1);}
+}
+
+/* CURSOR */
+.cursor{
+width:18px;height:18px;
+border:1px solid #fff;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+transform:translate(-50%,-50%);
+z-index:2000;
+will-change:transform;
+}
+.cursor.hover{
+transform:translate(-50%,-50%) scale(1.8);
+background:rgba(255,255,255,0.15);
+}
+
+/* NAV */
+nav{
+position:fixed;width:100%;top:0;
+padding:15px 40px;
+display:flex;justify-content:space-between;align-items:center;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+.logo{height:30px;}
+
+nav div{
+display:flex;
+align-items:center;
+}
+
+nav a{
+color:#fff;margin-left:20px;text-decoration:none;
+opacity:0.9;transition:0.3s;
+font-size:14px;
+}
+nav a:hover{opacity:0.6;}
+
+/* HERO */
+.hero{height:70vh;position:relative;overflow:hidden;}
+
+.hero iframe{
+position:absolute;top:50%;left:50%;
+width:177.77vh;height:100vh;
+transform:translate(-50%,-50%);
+pointer-events:none;
+opacity:0;
+transition:opacity 1s ease;
+}
+
+.overlay{
+position:absolute;inset:0;
+background:rgba(0,0,0,0.45);
+z-index:1;
+}
+
+.hero-content{
+position:relative;z-index:2;height:100%;
+display:flex;flex-direction:column;
+justify-content:center;
+align-items:flex-start;
+padding:0 10%;
+}
+
+/* TITULO */
+.brand{
+font-family:'Roboto', sans-serif;
+font-weight:700;
+font-style:italic;
+font-size:48px;
+letter-spacing:-1px;
+opacity:0;
+transform:translateY(40px);
+animation:fadeUp 1s ease forwards;
+}
+.sub{
+font-size:20px;margin-top:5px;opacity:0;
+animation:fadeUp 1s ease forwards 0.2s;
+}
+.hero p{
+margin-top:10px;opacity:0;
+animation:fadeUp 1s ease forwards 0.4s;
+}
+@keyframes fadeUp{
+to{opacity:1;transform:translateY(0);}
+}
+
+/* BOTONES */
+.btn{
+margin-top:20px;
+display:inline-block;
+padding:8px 16px;
+font-size:13px;
+text-decoration:none;
+color:#fff;
+border:1px solid rgba(255,255,255,0.4);
+border-radius:999px;
+transition:all 0.3s ease;
+}
+.btn:hover{background:#fff;color:#000;}
+
+section{padding:100px 10%;}
+
+/* REVEAL */
+.reveal{
+opacity:0;
+transform:translateY(100px);
+transition:1s;
+}
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* SERVICES */
+.services-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+margin-top:30px;
+}
+.service-box{
+border:1px solid rgba(255,255,255,0.15);
+padding:25px;
+background:rgba(255,255,255,0.03);
+transition:0.4s;
+}
+.service-box:hover{
+transform:translateY(-10px);
+border-color:#fff;
+}
+
+/* ABOUT */
+.about{display:flex;flex-wrap:wrap;gap:40px;align-items:center;}
+.about img{width:100%;max-width:400px;}
+.about-text{max-width:600px;}
+
+/* GALLERY */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:10px;
+}
+.gallery img{
+width:100%;
+height:260px;
+object-fit:cover;
+transition:0.4s;
+}
+.gallery img:hover{transform:scale(1.05);}
+
+/* PORTFOLIO */
+.portfolio iframe{
+width:100%;
+height:280px;
+margin-bottom:25px;
+border:none;
+transition:.4s;
+}
+.portfolio iframe:hover{transform:scale(1.02);}
+
+/* CONTACT */
+.contact{text-align:center;}
+.contact-buttons{
+margin-top:30px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+.contact-buttons a{
+padding:8px 14px;
+border:1px solid rgba(255,255,255,0.4);
+border-radius:999px;
+text-decoration:none;
+color:#fff;
+font-size:13px;
+transition:.3s;
+}
+.contact-buttons a:hover{background:#fff;color:#000;}
+
+/* CEOs */
+.ceos{
+margin-top:60px;
+display:flex;
+justify-content:center;
+gap:60px;
+flex-wrap:wrap;
+text-align:center;
+}
+.ceo{cursor:pointer;}
+.ceo img{
+width:120px;height:120px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid rgba(255,255,255,0.3);
+transition:.3s;
+}
+.ceo img:hover{
+transform:scale(1.05);
+border-color:#fff;
+}
+.ceo p{
+margin-top:10px;
+font-size:14px;
+color:#fff;
+}
+.ceo span{
+font-size:12px;
+opacity:0.7;
+}
+
+.ceo-title{
+margin-top:40px;
+font-size:20px;
+letter-spacing:1px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+body{cursor:auto;}
+.cursor{display:none;}
+nav{padding:12px 20px;}
+nav a{font-size:12px;margin-left:10px;}
+.hero{height:85vh;}
+.hero iframe{width:100vw;height:56.25vw;}
+.brand{font-size:30px;}
+.sub{font-size:16px;}
+.hero p{font-size:14px;}
+.btn{font-size:12px;padding:7px 14px;}
+section{padding:70px 6%;}
+.services-grid{grid-template-columns:1fr;}
+.gallery img{height:200px;}
+.portfolio iframe{height:200px;}
+.about{flex-direction:column;text-align:center;}
+.ceos{gap:30px;}
+.ceo img{width:100px;height:100px;}
+}
+
+@media(max-width:480px){
+.brand{font-size:26px;}
+.sub{font-size:14px;}
+nav a{font-size:11px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader">
+<img src="https://i.ibb.co/FLhbXwjp/MED-COLOR-BLANCO.png">
+</div>
+
+<div class="cursor"></div>
+
+<nav>
+<img src="https://i.ibb.co/FLhbXwjp/MED-COLOR-BLANCO.png" class="logo">
+<div>
+<a href="#about">Nosotros</a>
+<a href="#services">Servicios</a>
+<a href="#portfolio">Portafolio</a>
+<a href="#contact">Contacto</a>
+</div>
+</nav>
+
+<section class="hero">
+<iframe id="heroVideo" data-src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1#t=40s"></iframe>
+<div class="overlay"></div>
+
+<div class="hero-content">
+<div class="brand">Pantera.Creative</div>
+<div class="sub">Productora audiovisual</div>
+<p>Contenido con intención, estética e impacto</p>
+<a href="#portfolio" class="btn">Ver portafolio</a>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<h2 class="reveal">Servicios</h2>
+<div class="services-grid">
+<div class="service-box reveal">
+<h3>Contenido para marcas</h3>
+<small>Aquí vive todo lo comercial</small>
+<ul>
+<li>Contenido para redes</li>
+<li>Campañas publicitarias</li>
+<li>Fashion films</li>
+<li>Contenido editorial</li>
+<li>Activaciones</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="portfolio" class="portfolio reveal">
+<h2>Portafolio</h2>
+<iframe data-src="https://player.vimeo.com/video/1183887876"></iframe>
+<iframe data-src="https://player.vimeo.com/video/1062974250"></iframe>
+</section>
+
+<script>
+
+/* LOADER + HERO VIDEO REAL */
+window.addEventListener("load",()=>{
+const video=document.getElementById("heroVideo");
+
+setTimeout(()=>{
+video.src=video.dataset.src;
+
+video.onload=()=>{
+video.style.opacity=1;
+document.querySelector(".loader").classList.add("hidden");
+};
+
+},300);
+});
+
+/* REVEAL */
+const observer=new IntersectionObserver(e=>{
+e.forEach(entry=>{
+if(entry.isIntersecting) entry.target.classList.add('active');
+});
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+/* CURSOR SMOOTH */
+if(window.innerWidth>768){
+const cursor=document.querySelector('.cursor');
+let x=0,y=0,tx=0,ty=0;
+
+window.addEventListener('mousemove',e=>{
+tx=e.clientX;ty=e.clientY;
+});
+
+function loop(){
+x+=(tx-x)*0.15;
+y+=(ty-y)*0.15;
+cursor.style.transform=`translate(${x}px,${y}px)`;
+requestAnimationFrame(loop);
+}
+loop();
+}
+
+/* LAZY PORTFOLIO */
+const vids=document.querySelectorAll('.portfolio iframe');
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+const el=entry.target;
+if(!el.src) el.src=el.dataset.src;
+obs.unobserve(el);
+}
+});
+});
+vids.forEach(v=>obs.observe(v));
+
+</script>
+
+</body>
+</html>
