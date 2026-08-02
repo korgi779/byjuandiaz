@@ -12,7 +12,7 @@
 body{background:#000;color:#fff;cursor:none;}
 html{scroll-behavior:smooth;}
 
-/* LOADER */
+/* LOADER (LOGO) */
 .loader{
 position:fixed;
 inset:0;
@@ -24,16 +24,14 @@ z-index:3000;
 transition:opacity 1s ease;
 }
 .loader.hidden{opacity:0;pointer-events:none;}
-.loader span{
-font-family:'Roboto';
-font-size:28px;
-opacity:.8;
-letter-spacing:2px;
-animation:pulse 1.5s infinite;
+.loader img{
+width:120px;
+opacity:0;
+animation:logoFade 1.5s ease forwards;
 }
-@keyframes pulse{
-0%,100%{opacity:.3;}
-50%{opacity:1;}
+@keyframes logoFade{
+0%{opacity:0;transform:scale(0.8);}
+100%{opacity:1;transform:scale(1);}
 }
 
 /* CURSOR */
@@ -44,10 +42,11 @@ border-radius:50%;
 position:fixed;
 pointer-events:none;
 transform:translate(-50%,-50%);
+transition:transform .15s ease, background .2s;
 z-index:2000;
 }
 .cursor.hover{
-transform:translate(-50%,-50%) scale(1.6);
+transform:translate(-50%,-50%) scale(1.8);
 background:rgba(255,255,255,0.15);
 }
 
@@ -70,19 +69,16 @@ nav a:hover{opacity:0.6;}
 
 /* HERO */
 .hero{height:70vh;position:relative;overflow:hidden;}
-
 .hero iframe{
 position:absolute;top:50%;left:50%;
 width:177.77vh;height:100vh;
 transform:translate(-50%,-50%);
 }
-
 .overlay{
 position:absolute;inset:0;
 background:rgba(0,0,0,0.45);
 z-index:1;
 }
-
 .hero-content{
 position:relative;z-index:2;height:100%;
 display:flex;flex-direction:column;
@@ -102,65 +98,47 @@ opacity:0;
 transform:translateY(40px);
 animation:fadeUp 1s ease forwards;
 }
-
 .sub{
 font-size:20px;margin-top:5px;opacity:0;
 animation:fadeUp 1s ease forwards 0.2s;
 }
-
 .hero p{
 margin-top:10px;opacity:0;
 animation:fadeUp 1s ease forwards 0.4s;
 }
-
 @keyframes fadeUp{
 to{opacity:1;transform:translateY(0);}
 }
 
-/* BOTÓN PRO (ARREGLADO) */
+/* BOTONES */
 .btn{
 margin-top:20px;
 display:inline-block;
 padding:8px 16px;
-font-size:12px;
-letter-spacing:0.6px;
+font-size:13px;
 text-decoration:none;
 color:#fff;
 border:1px solid rgba(255,255,255,0.4);
 border-radius:999px;
-background:transparent;
 transition:all 0.3s ease;
-position:relative;
-overflow:hidden;
 }
-.btn::before{
-content:"";
-position:absolute;
-top:0;left:-100%;
-width:100%;height:100%;
-background:linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
-transition:0.6s;
-}
-.btn:hover::before{left:100%;}
 .btn:hover{background:#fff;color:#000;}
 
 /* SECTIONS */
 section{padding:100px 10%;}
 
-/* SCROLL */
+/* REVEAL */
 .reveal{
 opacity:0;
-transform:translateY(100px) scale(0.96);
-filter:blur(12px);
-transition:all 1.3s cubic-bezier(0.16,1,0.3,1);
+transform:translateY(100px);
+transition:1s;
 }
 .reveal.active{
 opacity:1;
-transform:translateY(0) scale(1);
-filter:blur(0);
+transform:translateY(0);
 }
 
-/* SERVICES (NO TOCADO) */
+/* SERVICES */
 .services-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -171,7 +149,6 @@ margin-top:30px;
 border:1px solid rgba(255,255,255,0.15);
 padding:25px;
 background:rgba(255,255,255,0.03);
-backdrop-filter:blur(8px);
 transition:0.4s;
 }
 .service-box:hover{
@@ -202,15 +179,19 @@ width:100%;
 height:280px;
 margin-bottom:25px;
 border:none;
+transition:.4s;
 }
+.portfolio iframe:hover{transform:scale(1.02);}
 
 /* CONTACT */
 .contact{text-align:center;}
 .contact-buttons{
 margin-top:30px;
-display:flex;justify-content:center;gap:15px;flex-wrap:wrap;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
 }
-
 .contact-buttons a{
 padding:8px 14px;
 border:1px solid rgba(255,255,255,0.4);
@@ -218,64 +199,41 @@ border-radius:999px;
 text-decoration:none;
 color:#fff;
 font-size:13px;
-position:relative;
-overflow:hidden;
+transition:.3s;
 }
-.contact-buttons a::before{
-content:"";
-position:absolute;
-top:0;left:-100%;
-width:100%;height:100%;
-background:linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
-transition:0.6s;
-}
-.contact-buttons a:hover::before{left:100%;}
 .contact-buttons a:hover{background:#fff;color:#000;}
 
-/* 🔥 DIRECCIÓN CREATIVA PRO */
-.creative-wrap{
+/* CEOs */
+.ceos{
+margin-top:60px;
 display:flex;
 justify-content:center;
 gap:60px;
-margin-top:60px;
 flex-wrap:wrap;
-}
-
-.creative-item{
 text-align:center;
-text-decoration:none;
-color:#fff;
 }
-
-.circle{
-width:85px;
-height:85px;
+.ceo{
+cursor:pointer;
+}
+.ceo img{
+width:120px;
+height:120px;
 border-radius:50%;
-overflow:hidden;
-border:1px solid rgba(255,255,255,0.3);
-transition:.4s;
-}
-
-.circle img{
-width:100%;
-height:100%;
 object-fit:cover;
+border:2px solid rgba(255,255,255,0.3);
+transition:.3s;
 }
-
-.circle:hover{
-transform:scale(1.1);
+.ceo img:hover{
+transform:scale(1.05);
 border-color:#fff;
 }
-
-.name{
+.ceo p{
 margin-top:10px;
-font-size:13px;
-letter-spacing:.5px;
+font-size:14px;
 }
-
-.role{
-font-size:11px;
-opacity:.5;
+.ceo span{
+font-size:12px;
+opacity:0.7;
 }
 
 /* MOBILE */
@@ -290,7 +248,11 @@ section{padding:70px 8%;}
 
 <body>
 
-<div class="loader"><span>Pantera Creative</span></div>
+<!-- LOADER -->
+<div class="loader">
+<img src="https://i.ibb.co/FLhbXwjp/MED-COLOR-BLANCO.png">
+</div>
+
 <div class="cursor"></div>
 
 <nav>
@@ -303,9 +265,8 @@ section{padding:70px 8%;}
 </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-<iframe src="https://player.vimeo.com/video/1183887876#t=40s&background=1&autoplay=1&loop=1&muted=1"></iframe>
+<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1"></iframe>
 <div class="overlay"></div>
 
 <div class="hero-content">
@@ -316,10 +277,99 @@ section{padding:70px 8%;}
 </div>
 </section>
 
-<!-- TODO TU CONTENIDO SIGUE EXACTAMENTE IGUAL -->
-<!-- (SERVICES, ABOUT, GALLERY, PORTFOLIO NO TOCADOS) -->
+<!-- SERVICES -->
+<section id="services">
+<h2 class="reveal">Servicios</h2>
 
-<!-- CONTACT -->
+<div class="services-grid">
+
+<div class="service-box reveal">
+<h3>Contenido para marcas</h3>
+<small>Aquí vive todo lo comercial</small>
+<ul>
+<li>Contenido para redes (reels, piezas cortas)</li>
+<li>Campañas publicitarias</li>
+<li>Fashion films</li>
+<li>Contenido editorial</li>
+<li>Activaciones de marcas</li>
+</ul>
+<div class="enfoque">Enfoque: posicionamiento + estética + impacto</div>
+</div>
+
+<div class="service-box reveal">
+<h3>Contenido corporativo</h3>
+<small>Empresas serias / industria</small>
+<ul>
+<li>Videos institucionales</li>
+<li>Procesos industriales</li>
+<li>Cultura empresarial</li>
+<li>Presentaciones de empresa</li>
+</ul>
+<div class="enfoque">Enfoque: claridad + confianza + profesionalismo</div>
+</div>
+
+<div class="service-box reveal">
+<h3>Contenido artístico</h3>
+<small>Artistas, música, proyectos creativos</small>
+<ul>
+<li>Videoclips</li>
+<li>Teasers y piezas creativas</li>
+<li>Documentales / perfiles</li>
+<li>Proyectos visuales</li>
+</ul>
+<div class="enfoque">Enfoque: identidad + narrativa + estética</div>
+</div>
+
+<div class="service-box reveal">
+<h3>Eventos y experiencias</h3>
+<small>Cobertura, contenido en tiempo real y amplificación</small>
+<ul>
+<li>Cobertura de eventos</li>
+<li>Contenido en tiempo real</li>
+<li>Piezas post-evento</li>
+<li>Activaciones de marca</li>
+</ul>
+<div class="enfoque">Enfoque: visibilidad + amplificación</div>
+</div>
+
+</div>
+</section>
+
+<section id="about" class="about reveal">
+<img src="https://i.ibb.co/DgMfWBqN/IMG-0508.jpg">
+<div class="about-text">
+<h2>Sobre nosotros</h2>
+<p>(Este texto lo editas tú luego)</p>
+</div>
+</section>
+
+<section class="reveal">
+<div class="gallery">
+<img src="https://i.ibb.co/d0P2QtJB/IMG-5758.jpg">
+<img src="https://i.ibb.co/1GfjNGt5/IMG-5755.jpg">
+<img src="https://i.ibb.co/GvyDWjHK/IMG-3531.jpg">
+<img src="https://i.ibb.co/xSKhH4Sq/IMG-3535.jpg">
+<img src="https://i.ibb.co/99M8xfyt/IMG-9481.jpg">
+<img src="https://i.ibb.co/mVwk9nrm/IMG-9972.jpg">
+</div>
+</section>
+
+<section id="portfolio" class="portfolio reveal">
+<h2>Portafolio</h2>
+
+<h3>Videoclips</h3>
+<iframe src="https://player.vimeo.com/video/1183887876"></iframe>
+<iframe src="https://player.vimeo.com/video/1062974250"></iframe>
+<iframe src="https://player.vimeo.com/video/1062971665"></iframe>
+<iframe src="https://player.vimeo.com/video/1034642854"></iframe>
+
+<h3>Eventos</h3>
+<iframe src="https://player.vimeo.com/video/1032576795"></iframe>
+
+<h3>Marcas</h3>
+<iframe src="https://player.vimeo.com/video/1183939530"></iframe>
+</section>
+
 <section id="contact" class="contact reveal">
 <h2>Contacto</h2>
 
@@ -328,25 +378,17 @@ section{padding:70px 8%;}
 <a href="https://wa.me/573026206880" target="_blank">WhatsApp</a>
 </div>
 
-<!-- 🔥 DIRECCIÓN CREATIVA -->
-<div class="creative-wrap">
+<!-- CEOs -->
+<div class="ceos">
 
-<!-- JUAN -->
-<a href="LINK_INSTAGRAM_JUAN" target="_blank" class="creative-item">
-<div class="circle">
-<img src="LINK_IMAGEN_JUAN">
-</div>
-<div class="name">Juan Díaz</div>
-<div class="role">Productor audiovisual</div>
+<a href="https://instagram.com/" target="_blank" class="ceo">
+<img src="https://via.placeholder.com/300">
+<p>Juan Díaz<br><span>Productor audiovisual</span></p>
 </a>
 
-<!-- DIEGO -->
-<a href="LINK_INSTAGRAM_DIEGO" target="_blank" class="creative-item">
-<div class="circle">
-<img src="LINK_IMAGEN_DIEGO">
-</div>
-<div class="name">Diego Ospina</div>
-<div class="role">Productor audiovisual</div>
+<a href="https://instagram.com/" target="_blank" class="ceo">
+<img src="https://via.placeholder.com/300">
+<p>Diego Ospina<br><span>Productor audiovisual</span></p>
 </a>
 
 </div>
@@ -369,23 +411,16 @@ entry.target.classList.add('active');
 },{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-// CURSOR FIX
+// CURSOR
 const cursor=document.querySelector('.cursor');
 window.addEventListener('mousemove',e=>{
 cursor.style.top=e.clientY+'px';
 cursor.style.left=e.clientX+'px';
 });
 
-// HOVER SOLO LINKS
 document.querySelectorAll('a').forEach(el=>{
 el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
 el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
-});
-
-// SONIDO
-const clickSound=new Audio("https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3");
-document.querySelectorAll("a").forEach(btn=>{
-btn.addEventListener("click",()=>{clickSound.volume=0.2;clickSound.play();});
 });
 </script>
 
