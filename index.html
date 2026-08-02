@@ -6,164 +6,125 @@
 <title>Juan Díaz | Productor Audiovisual</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+* {margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+body {background:#0d0d0d;color:white;scroll-behavior:smooth;}
 
-body {
-  background: #0d0d0d;
-  color: white;
-  scroll-behavior: smooth;
-}
-
-/* NAVBAR */
+/* NAV */
 nav {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  background: rgba(0,0,0,0.9);
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 40px;
-  z-index: 1000;
+  position:fixed;
+  width:100%;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  padding:15px 40px;
+  background:rgba(0,0,0,0.85);
+  z-index:1000;
 }
 
-nav h1 {
-  font-size: 18px;
-}
+nav ul {display:flex;gap:20px;list-style:none;}
+nav a {color:white;text-decoration:none;font-size:14px;}
 
-nav ul {
-  display: flex;
-  gap: 20px;
-  list-style: none;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-/* HERO */
+/* HERO VIDEO */
 .hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 10%;
+  height:70vh;
+  position:relative;
+  overflow:hidden;
 }
 
-.hero h2 {
-  font-size: 50px;
+.hero video {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(0.6);
 }
 
-.hero p {
-  margin: 15px 0;
-  opacity: 0.7;
+.hero-content {
+  position:absolute;
+  top:50%;
+  left:10%;
+  transform:translateY(-50%);
 }
+
+.hero h1 {font-size:45px;}
+.hero p {opacity:0.8;margin-top:10px;}
 
 .hero button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  background: white;
-  color: black;
-  border: none;
-  cursor: pointer;
+  margin-top:20px;
+  padding:12px 25px;
+  background:white;
+  border:none;
+  cursor:pointer;
 }
 
-/* REEL */
-.reel {
-  padding: 100px 10%;
-}
-
-iframe {
-  width: 100%;
-  height: 500px;
-}
-
-/* SERVICIOS */
+/* SERVICES */
 .services {
-  padding: 100px 10%;
-  text-align: center;
+  padding:80px 10%;
+  text-align:center;
 }
 
-.services h2 {
-  font-size: 35px;
-  margin-bottom: 40px;
-}
+.services h2 {margin-bottom:40px;}
 
 .service-grid {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.service {
-  width: 250px;
-  opacity: 0.8;
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
 }
 
 /* ABOUT */
 .about {
-  padding: 100px 10%;
-  display: flex;
-  align-items: center;
-  gap: 40px;
+  padding:80px 10%;
+  text-align:center;
+  max-width:800px;
+  margin:auto;
 }
 
-.about-text {
-  flex: 1;
-}
-
-.about-text h2 {
-  font-size: 40px;
-  margin-bottom: 20px;
-}
-
-.about-text p {
-  opacity: 0.7;
-  line-height: 1.6;
-}
-
-.about-img {
-  flex: 1;
-  height: 300px;
-  background: #222;
-}
+.about h2 {font-size:35px;margin-bottom:20px;}
+.about p {opacity:0.7;line-height:1.6;}
 
 /* PORTFOLIO */
 .portfolio {
-  padding: 100px 10%;
+  padding:80px 10%;
 }
 
-.portfolio h2 {
-  font-size: 40px;
-  margin-bottom: 50px;
-}
+.portfolio h2 {margin-bottom:40px;}
 
-.category {
-  margin-bottom: 60px;
-}
-
-.category h3 {
-  margin-bottom: 20px;
-}
+.category {margin-bottom:60px;}
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-  gap: 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:20px;
+}
+
+iframe {
+  width:100%;
+  height:250px;
+  border:none;
+}
+
+/* GALLERY */
+.gallery {
+  padding:80px 10%;
+}
+
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+}
+
+.gallery img {
+  width:100%;
+  height:250px;
+  object-fit:cover;
 }
 
 /* FOOTER */
 footer {
-  padding: 50px;
-  text-align: center;
-  opacity: 0.5;
+  text-align:center;
+  padding:40px;
+  opacity:0.5;
 }
 </style>
 </head>
@@ -172,49 +133,47 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <h1>Juan Díaz</h1>
+  <h3>Juan Díaz</h3>
   <ul>
-    <li><a href="#reel">Reel</a></li>
     <li><a href="#services">Servicios</a></li>
     <li><a href="#about">Sobre mí</a></li>
     <li><a href="#portfolio">Portafolio</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
+<!-- HERO VIDEO LOOP -->
 <section class="hero">
-  <h2>Juan Díaz</h2>
-  <p>Productor Audiovisual especializado en videoclips musicales.</p>
-  <button onclick="document.getElementById('portfolio').scrollIntoView()">Ver Portafolio</button>
+  <video autoplay muted loop playsinline id="heroVideo">
+    <source src="https://player.vimeo.com/progressive_redirect/playback/1183887876/rendition/720p/file.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-content">
+    <h1>Juan Díaz</h1>
+    <p>Productor Audiovisual especializado en videoclips</p>
+    <button onclick="document.getElementById('portfolio').scrollIntoView()">Ver Portafolio</button>
+  </div>
 </section>
 
-<!-- REEL -->
-<section id="reel" class="reel">
-  <iframe src="https://player.vimeo.com/video/1183887876" frameborder="0" allowfullscreen></iframe>
-</section>
-
-<!-- SERVICIOS -->
+<!-- SERVICES -->
 <section id="services" class="services">
   <h2>Servicios</h2>
   <div class="service-grid">
-    <div class="service">Dirección y Producción de Video</div>
-    <div class="service">Edición Profesional</div>
-    <div class="service">Color Grading</div>
-    <div class="service">Videoclips Musicales</div>
+    <div>Dirección y Producción</div>
+    <div>Edición</div>
+    <div>Color Grading</div>
+    <div>Videoclips Musicales</div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about" class="about">
-  <div class="about-text">
-    <h2>Sobre mí</h2>
-    <p>
-      Soy Juan Díaz, productor audiovisual enfocado en la creación de videoclips musicales 
-      y contenido visual de alto impacto. Trabajo desde la idea hasta la postproducción, 
-      desarrollando piezas que conectan estética, narrativa y ritmo.
-    </p>
-  </div>
-  <div class="about-img"></div>
+  <h2>Sobre mí</h2>
+  <p>
+    Soy Juan Díaz, productor audiovisual enfocado en videoclips musicales 
+    y contenido visual de alto impacto. Desarrollo proyectos desde la idea 
+    hasta la postproducción, creando piezas con identidad visual fuerte 
+    y narrativa cinematográfica.
+  </p>
 </section>
 
 <!-- PORTFOLIO -->
@@ -247,10 +206,27 @@ footer {
 
 </section>
 
-<!-- FOOTER -->
+<!-- GALERÍA (AQUÍ VAN TUS FOTOS) -->
+<section class="gallery">
+  <h2>Fotografía</h2>
+  <div class="gallery-grid">
+    <!-- AQUÍ PEGAS TUS LINKS DE IMÁGENES -->
+    <!-- ejemplo -->
+    <!-- <img src="LINK_DE_DRIVE"> -->
+  </div>
+</section>
+
 <footer>
   © 2026 Juan Díaz
 </footer>
+
+<script>
+// empezar video en segundo 40
+const video = document.getElementById("heroVideo");
+video.addEventListener("loadedmetadata", () => {
+  video.currentTime = 40;
+});
+</script>
 
 </body>
 </html>
