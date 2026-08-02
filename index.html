@@ -25,15 +25,24 @@ backdrop-filter:blur(10px);
 z-index:1000;
 }
 
+/* LOGO */
+.logo{
+height:30px;
+}
+
+/* LINKS */
 nav a{
 color:#fff;
 text-decoration:none;
-margin-left:20px;
+margin-left:25px;
 font-size:14px;
+opacity:0.9;
 transition:0.3s;
 }
 
-nav a:hover{opacity:0.6;}
+nav a:hover{
+opacity:0.6;
+}
 
 /* HERO */
 .hero{
@@ -73,32 +82,31 @@ padding:0 10%;
 font-family:'Roboto', sans-serif;
 font-weight:700;
 font-style:italic;
-font-size:50px;
-line-height:1.1;
+font-size:48px;
+line-height:1.05;
 }
 
 .hero h2{
-font-size:24px;
-margin-top:5px;
+font-size:22px;
+margin-top:6px;
 opacity:0.85;
 }
 
-/* BOTON PRO */
+/* BOTON (COMO EL TUYO PERO PRO) */
 .btn{
-margin-top:20px;
-background:#fff;
-color:#000;
-padding:10px 18px;
+margin-top:18px;
+border:1px solid #fff;
+padding:8px 16px;
 font-size:14px;
 text-decoration:none;
+color:#fff;
 display:inline-block;
-border-radius:30px;
 transition:0.3s;
 }
 
 .btn:hover{
-transform:translateY(-2px);
-box-shadow:0 10px 25px rgba(255,255,255,0.2);
+background:#fff;
+color:#000;
 }
 
 /* SECCIONES */
@@ -121,108 +129,62 @@ filter:blur(0);
 /* SERVICES */
 .services-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
-margin-top:30px;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
+margin-top:40px;
 }
 
 .service-box{
 border:1px solid #222;
-padding:25px;
+padding:28px;
 background:rgba(255,255,255,0.02);
 transition:0.4s;
 }
 
 .service-box:hover{
-transform:translateY(-5px);
+transform:translateY(-6px);
 border-color:#555;
 background:rgba(255,255,255,0.05);
 }
 
-/* ABOUT */
-.about{
-display:flex;
-flex-wrap:wrap;
-gap:40px;
-align-items:center;
+/* TITULO SERVICIO */
+.service-box h3{
+margin-bottom:10px;
 }
 
-.about img{
-width:100%;
-max-width:400px;
+/* TEXTO SECUNDARIO */
+.service-box p{
+font-size:14px;
+opacity:0.7;
+margin-bottom:10px;
 }
 
-/* GALERIA */
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:10px;
+/* LISTA */
+.service-box ul{
+margin-left:18px;
+margin-bottom:12px;
 }
 
-.gallery img{
-width:100%;
-height:260px;
-object-fit:cover;
+.service-box li{
+margin-bottom:6px;
+font-size:14px;
 }
 
-/* PORTFOLIO */
-.portfolio h2{
-text-align:center;
-margin-bottom:50px;
+/* FOOT NOTA */
+.service-box .focus{
+font-size:13px;
+opacity:0.6;
 }
 
-.portfolio h3{
-margin:40px 0 15px;
-}
-
-.portfolio iframe{
-width:100%;
-max-width:800px;
-height:280px;
-display:block;
-margin-bottom:25px;
-border:none;
-}
-
-/* CONTACT */
-.contact{
-text-align:center;
-}
-
-.contact-buttons{
-margin-top:20px;
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.contact-buttons a{
-padding:10px 18px;
-border:1px solid #fff;
-text-decoration:none;
-color:#fff;
-border-radius:30px;
-transition:0.3s;
-}
-
-.contact-buttons a:hover{
-background:#fff;
-color:#000;
-}
-
-/* MOBILE */
-@media(max-width:768px){
-.brand-name{font-size:34px;}
-.hero h2{font-size:18px;}
-}
+/* JS */
 </style>
 </head>
 
 <body>
 
 <nav>
-<div style="font-weight:bold;">Pantera</div>
+<!-- TU LOGO -->
+<img src="https://i.ibb.co/FLhbXwjp/MED-COLOR-BLANCO.png" class="logo">
 
 <div>
 <a href="#about">Nosotros</a>
@@ -249,58 +211,56 @@ color:#000;
 <h2 class="reveal">Servicios</h2>
 
 <div class="services-grid">
-<div class="service-box reveal">Producción audiovisual</div>
-<div class="service-box reveal">Contenido para redes</div>
-<div class="service-box reveal">Cobertura de eventos</div>
-<div class="service-box reveal">Videoclips musicales</div>
-<div class="service-box reveal">Contenido corporativo</div>
-<div class="service-box reveal">Dirección creativa</div>
+
+<div class="service-box reveal">
+<h3>Contenido para marcas</h3>
+<p>Aquí vive todo lo comercial</p>
+<ul>
+<li>Contenido para redes (reels, piezas cortas)</li>
+<li>Campañas publicitarias</li>
+<li>Fashion films</li>
+<li>Contenido editorial</li>
+<li>Activaciones de marcas</li>
+</ul>
+<div class="focus">Enfoque: posicionamiento + estética + impacto</div>
 </div>
-</section>
 
-<!-- ABOUT -->
-<section id="about" class="about">
-<img src="https://i.ibb.co/DgMfWBqN/IMG-0508.jpg" class="reveal">
-<div class="reveal">
-<h2>Sobre nosotros</h2>
-<p>Aquí puedes escribir sobre la visión, estilo y esencia de Pantera Creative.</p>
+<div class="service-box reveal">
+<h3>Contenido corporativo</h3>
+<p>Empresas serias / industria</p>
+<ul>
+<li>Videos institucionales</li>
+<li>Procesos industriales</li>
+<li>Cultura empresarial</li>
+<li>Presentaciones de empresa</li>
+</ul>
+<div class="focus">Enfoque: claridad + confianza + profesionalismo</div>
 </div>
-</section>
 
-<!-- GALERIA -->
-<section>
-<div class="gallery">
-<img src="https://i.ibb.co/d0P2QtJB/IMG-5758.jpg" class="reveal">
-<img src="https://i.ibb.co/1GfjNGt5/IMG-5755.jpg" class="reveal">
-<img src="https://i.ibb.co/GvyDWjHK/IMG-3531.jpg" class="reveal">
-<img src="https://i.ibb.co/xSKhH4Sq/IMG-3535.jpg" class="reveal">
-<img src="https://i.ibb.co/99M8xfyt/IMG-9481.jpg" class="reveal">
-<img src="https://i.ibb.co/mVwk9nrm/IMG-9972.jpg" class="reveal">
+<div class="service-box reveal">
+<h3>Contenido artístico</h3>
+<p>Artistas, música, proyectos creativos</p>
+<ul>
+<li>Videoclips</li>
+<li>Teasers y piezas creativas</li>
+<li>Documentales / perfiles</li>
+<li>Proyectos visuales</li>
+</ul>
+<div class="focus">Enfoque: identidad + narrativa + estética</div>
 </div>
-</section>
 
-<!-- PORTFOLIO -->
-<section id="portfolio" class="portfolio">
-<h2 class="reveal">Portafolio</h2>
+<div class="service-box reveal">
+<h3>Eventos y experiencias</h3>
+<p>Cobertura en tiempo real</p>
+<ul>
+<li>Cobertura de eventos</li>
+<li>Contenido en tiempo real</li>
+<li>Piezas post-evento</li>
+<li>Activaciones de marca</li>
+</ul>
+<div class="focus">Enfoque: visibilidad + amplificación</div>
+</div>
 
-<h3 class="reveal">Videoclips</h3>
-<iframe src="https://player.vimeo.com/video/1183887876"></iframe>
-
-<h3 class="reveal">Eventos</h3>
-<iframe src="https://player.vimeo.com/video/1032576795"></iframe>
-
-<h3 class="reveal">Marcas</h3>
-<iframe src="https://player.vimeo.com/video/1183939530"></iframe>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact">
-<h2 class="reveal">Contacto</h2>
-
-<div class="contact-buttons reveal">
-<a href="mailto:juanbiazp95@gmail.com">Correo</a>
-<a href="https://wa.me/573026206880">WhatsApp</a>
-<a href="#">Instagram</a>
 </div>
 </section>
 
