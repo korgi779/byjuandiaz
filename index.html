@@ -42,8 +42,8 @@ border-radius:50%;
 position:fixed;
 pointer-events:none;
 transform:translate(-50%,-50%);
+transition:transform .15s ease, background .2s;
 z-index:2000;
-will-change:transform;
 }
 .cursor.hover{
 transform:translate(-50%,-50%) scale(1.8);
@@ -75,22 +75,17 @@ nav a:hover{opacity:0.6;}
 
 /* HERO */
 .hero{height:70vh;position:relative;overflow:hidden;}
-
 .hero iframe{
 position:absolute;top:50%;left:50%;
 width:177.77vh;height:100vh;
 transform:translate(-50%,-50%);
 pointer-events:none;
-opacity:0;
-transition:opacity 1s ease;
 }
-
 .overlay{
 position:absolute;inset:0;
 background:rgba(0,0,0,0.45);
 z-index:1;
 }
-
 .hero-content{
 position:relative;z-index:2;height:100%;
 display:flex;flex-direction:column;
@@ -136,6 +131,7 @@ transition:all 0.3s ease;
 }
 .btn:hover{background:#fff;color:#000;}
 
+/* SECTIONS */
 section{padding:100px 10%;}
 
 /* REVEAL */
@@ -258,7 +254,8 @@ letter-spacing:1px;
 body{cursor:auto;}
 .cursor{display:none;}
 nav{padding:12px 20px;}
-nav a{font-size:12px;margin-left:10px;}
+nav div{gap:12px;flex-wrap:wrap;justify-content:flex-end;}
+nav a{margin-left:10px;font-size:12px;}
 .hero{height:85vh;}
 .hero iframe{width:100vw;height:56.25vw;}
 .brand{font-size:30px;}
@@ -272,12 +269,6 @@ section{padding:70px 6%;}
 .about{flex-direction:column;text-align:center;}
 .ceos{gap:30px;}
 .ceo img{width:100px;height:100px;}
-}
-
-@media(max-width:480px){
-.brand{font-size:26px;}
-.sub{font-size:14px;}
-nav a{font-size:11px;}
 }
 </style>
 </head>
@@ -301,7 +292,7 @@ nav a{font-size:11px;}
 </nav>
 
 <section class="hero">
-<iframe id="heroVideo" data-src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1#t=40s"></iframe>
+<iframe loading="lazy" src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1"></iframe>
 <div class="overlay"></div>
 
 <div class="hero-content">
@@ -312,10 +303,11 @@ nav a{font-size:11px;}
 </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
 <h2 class="reveal">Servicios</h2>
+
 <div class="services-grid">
+
 <div class="service-box reveal">
 <h3>Contenido para marcas</h3>
 <small>Aquí vive todo lo comercial</small>
@@ -324,74 +316,120 @@ nav a{font-size:11px;}
 <li>Campañas publicitarias</li>
 <li>Fashion films</li>
 <li>Contenido editorial</li>
+<li>Activaciones de marcas</li>
+</ul>
+</div>
+
+<div class="service-box reveal">
+<h3>Contenido corporativo</h3>
+<ul>
+<li>Videos institucionales</li>
+<li>Procesos industriales</li>
+<li>Cultura empresarial</li>
+<li>Presentaciones</li>
+</ul>
+</div>
+
+<div class="service-box reveal">
+<h3>Contenido artístico</h3>
+<ul>
+<li>Videoclips</li>
+<li>Teasers</li>
+<li>Documentales</li>
+<li>Proyectos visuales</li>
+</ul>
+</div>
+
+<div class="service-box reveal">
+<h3>Eventos</h3>
+<ul>
+<li>Cobertura</li>
+<li>Contenido en tiempo real</li>
+<li>Post-evento</li>
 <li>Activaciones</li>
 </ul>
 </div>
+
 </div>
 </section>
 
 <section id="portfolio" class="portfolio reveal">
 <h2>Portafolio</h2>
-<iframe data-src="https://player.vimeo.com/video/1183887876"></iframe>
-<iframe data-src="https://player.vimeo.com/video/1062974250"></iframe>
+
+<h3>Videoclips</h3>
+<iframe loading="lazy" src="https://player.vimeo.com/video/1183887876"></iframe>
+<iframe loading="lazy" src="https://player.vimeo.com/video/1062974250"></iframe>
+<iframe loading="lazy" src="https://player.vimeo.com/video/1062971665"></iframe>
+<iframe loading="lazy" src="https://player.vimeo.com/video/1034642854"></iframe>
+
+<h3>Eventos</h3>
+<iframe loading="lazy" src="https://player.vimeo.com/video/1032576795"></iframe>
+
+<h3>Marcas</h3>
+<iframe loading="lazy" src="https://player.vimeo.com/video/1183939530"></iframe>
+</section>
+
+<section id="contact" class="contact reveal">
+<h2>Contacto</h2>
+
+<div class="contact-buttons">
+<a href="mailto:juanbiazp95@gmail.com">Correo</a>
+<a href="https://wa.me/573026206880">WhatsApp</a>
+</div>
+
+<h3 class="ceo-title">Dirección Creativa</h3>
+
+<div class="ceos">
+<div class="ceo">
+<img src="https://via.placeholder.com/300">
+<p>Juan Díaz<br><span>Productor</span></p>
+</div>
+
+<div class="ceo">
+<img src="https://via.placeholder.com/300">
+<p>Diego Ospina<br><span>Productor</span></p>
+</div>
+</div>
+
 </section>
 
 <script>
-
-/* LOADER + HERO VIDEO REAL */
+// LOADER
 window.addEventListener("load",()=>{
-const video=document.getElementById("heroVideo");
-
 setTimeout(()=>{
-video.src=video.dataset.src;
-
-video.onload=()=>{
-video.style.opacity=1;
 document.querySelector(".loader").classList.add("hidden");
-};
-
-},300);
+},800);
 });
 
-/* REVEAL */
-const observer=new IntersectionObserver(e=>{
-e.forEach(entry=>{
-if(entry.isIntersecting) entry.target.classList.add('active');
+// SCROLL REVEAL
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('active');
+}
 });
 },{threshold:0.15});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
-/* CURSOR SMOOTH */
-if(window.innerWidth>768){
+// CURSOR
 const cursor=document.querySelector('.cursor');
-let x=0,y=0,tx=0,ty=0;
 
+if(window.innerWidth > 768){
 window.addEventListener('mousemove',e=>{
-tx=e.clientX;ty=e.clientY;
+cursor.style.top=e.clientY+'px';
+cursor.style.left=e.clientX+'px';
 });
 
-function loop(){
-x+=(tx-x)*0.15;
-y+=(ty-y)*0.15;
-cursor.style.transform=`translate(${x}px,${y}px)`;
-requestAnimationFrame(loop);
-}
-loop();
+document.querySelectorAll('a').forEach(el=>{
+el.addEventListener('mouseenter',()=>cursor.classList.add('hover'));
+el.addEventListener('mouseleave',()=>cursor.classList.remove('hover'));
+});
 }
 
-/* LAZY PORTFOLIO */
-const vids=document.querySelectorAll('.portfolio iframe');
-const obs=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-const el=entry.target;
-if(!el.src) el.src=el.dataset.src;
-obs.unobserve(el);
+// PAUSAR VIDEO HERO EN MOBILE (MEJORA RENDIMIENTO)
+if(window.innerWidth < 768){
+document.querySelector(".hero iframe").src = "";
 }
-});
-});
-vids.forEach(v=>obs.observe(v));
-
 </script>
 
 </body>
