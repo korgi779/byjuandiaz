@@ -25,12 +25,6 @@ backdrop-filter:blur(10px);
 z-index:1000;
 }
 
-/* LOGO */
-.logo{
-height:30px;
-}
-
-/* LINKS */
 nav a{
 color:#fff;
 text-decoration:none;
@@ -40,32 +34,20 @@ opacity:0.9;
 transition:0.3s;
 }
 
-nav a:hover{
-opacity:0.6;
-}
+nav a:hover{opacity:0.6;}
+
+.logo{height:30px;}
 
 /* HERO */
-.hero{
-height:70vh;
-position:relative;
-overflow:hidden;
-}
-
+.hero{height:70vh;position:relative;overflow:hidden;}
 .hero iframe{
 position:absolute;
-top:50%;
-left:50%;
-width:177.77vh;
-height:100vh;
+top:50%;left:50%;
+width:177.77vh;height:100vh;
 transform:translate(-50%,-50%);
 pointer-events:none;
 }
-
-.overlay{
-position:absolute;
-inset:0;
-background:rgba(0,0,0,0.45);
-}
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,0.45);}
 
 .hero-content{
 position:relative;
@@ -77,24 +59,17 @@ justify-content:center;
 padding:0 10%;
 }
 
-/* TITULO */
 .brand-name{
 font-family:'Roboto', sans-serif;
-font-weight:700;
-font-style:italic;
 font-size:48px;
+font-style:italic;
 line-height:1.05;
 }
 
-.hero h2{
-font-size:22px;
-margin-top:6px;
-opacity:0.85;
-}
+.hero h2{font-size:22px;margin-top:4px;opacity:0.85;}
 
-/* BOTON (COMO EL TUYO PERO PRO) */
 .btn{
-margin-top:18px;
+margin-top:15px;
 border:1px solid #fff;
 padding:8px 16px;
 font-size:14px;
@@ -104,10 +79,7 @@ display:inline-block;
 transition:0.3s;
 }
 
-.btn:hover{
-background:#fff;
-color:#000;
-}
+.btn:hover{background:#fff;color:#000;}
 
 /* SECCIONES */
 section{padding:100px 10%;}
@@ -119,14 +91,16 @@ transform:translateY(60px);
 filter:blur(10px);
 transition:all 1s ease;
 }
-
 .reveal.active{
 opacity:1;
 transform:translateY(0);
 filter:blur(0);
 }
 
-/* SERVICES */
+/* NOSOTROS */
+.about p{max-width:700px;opacity:0.8;}
+
+/* SERVICIOS */
 .services-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -147,45 +121,79 @@ border-color:#555;
 background:rgba(255,255,255,0.05);
 }
 
-/* TITULO SERVICIO */
-.service-box h3{
-margin-bottom:10px;
+.service-box h3{margin-bottom:10px;}
+.service-box p{font-size:14px;opacity:0.7;margin-bottom:10px;}
+.service-box ul{margin-left:18px;margin-bottom:12px;}
+.service-box li{margin-bottom:6px;font-size:14px;}
+.focus{font-size:13px;opacity:0.6;}
+
+/* GALERIA */
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+margin-top:40px;
 }
 
-/* TEXTO SECUNDARIO */
-.service-box p{
-font-size:14px;
-opacity:0.7;
-margin-bottom:10px;
+.gallery img{
+width:100%;
+height:300px;
+object-fit:cover;
+filter:blur(10px);
+transition:1s;
 }
 
-/* LISTA */
-.service-box ul{
-margin-left:18px;
-margin-bottom:12px;
+.gallery img.active{filter:blur(0);}
+
+/* PORTAFOLIO */
+.portfolio h2{text-align:center;margin-bottom:40px;}
+
+.category{
+margin-top:50px;
 }
 
-.service-box li{
-margin-bottom:6px;
-font-size:14px;
+.category h3{
+margin-bottom:20px;
 }
 
-/* FOOT NOTA */
-.service-box .focus{
-font-size:13px;
-opacity:0.6;
+.video-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
 }
 
-/* JS */
+.video-grid iframe{
+width:100%;
+height:200px;
+}
+
+/* CONTACTO */
+.contact-buttons{
+display:flex;
+gap:15px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.contact-buttons a{
+border:1px solid #fff;
+padding:10px 16px;
+text-decoration:none;
+color:#fff;
+transition:0.3s;
+}
+
+.contact-buttons a:hover{
+background:#fff;
+color:#000;
+}
 </style>
 </head>
 
 <body>
 
 <nav>
-<!-- TU LOGO -->
 <img src="https://i.ibb.co/FLhbXwjp/MED-COLOR-BLANCO.png" class="logo">
-
 <div>
 <a href="#about">Nosotros</a>
 <a href="#services">Servicios</a>
@@ -196,7 +204,7 @@ opacity:0.6;
 
 <!-- HERO -->
 <section class="hero">
-<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1#t=40s"></iframe>
+<iframe src="https://player.vimeo.com/video/1183887876?background=1&autoplay=1&loop=1&muted=1"></iframe>
 <div class="overlay"></div>
 
 <div class="hero-content">
@@ -206,7 +214,13 @@ opacity:0.6;
 </div>
 </section>
 
-<!-- SERVICES -->
+<!-- NOSOTROS -->
+<section id="about" class="about">
+<h2 class="reveal">Nosotros</h2>
+<p class="reveal">Somos una productora audiovisual enfocada en crear contenido visual de alto impacto para marcas, artistas y empresas.</p>
+</section>
+
+<!-- SERVICIOS -->
 <section id="services">
 <h2 class="reveal">Servicios</h2>
 
@@ -216,52 +230,86 @@ opacity:0.6;
 <h3>Contenido para marcas</h3>
 <p>Aquí vive todo lo comercial</p>
 <ul>
-<li>Contenido para redes (reels, piezas cortas)</li>
+<li>Contenido para redes</li>
 <li>Campañas publicitarias</li>
 <li>Fashion films</li>
 <li>Contenido editorial</li>
-<li>Activaciones de marcas</li>
+<li>Activaciones</li>
 </ul>
-<div class="focus">Enfoque: posicionamiento + estética + impacto</div>
+<div class="focus">Enfoque: impacto visual</div>
 </div>
 
 <div class="service-box reveal">
 <h3>Contenido corporativo</h3>
-<p>Empresas serias / industria</p>
 <ul>
 <li>Videos institucionales</li>
-<li>Procesos industriales</li>
+<li>Procesos</li>
 <li>Cultura empresarial</li>
-<li>Presentaciones de empresa</li>
 </ul>
-<div class="focus">Enfoque: claridad + confianza + profesionalismo</div>
 </div>
 
 <div class="service-box reveal">
 <h3>Contenido artístico</h3>
-<p>Artistas, música, proyectos creativos</p>
 <ul>
 <li>Videoclips</li>
-<li>Teasers y piezas creativas</li>
-<li>Documentales / perfiles</li>
+<li>Documentales</li>
 <li>Proyectos visuales</li>
 </ul>
-<div class="focus">Enfoque: identidad + narrativa + estética</div>
 </div>
 
 <div class="service-box reveal">
-<h3>Eventos y experiencias</h3>
-<p>Cobertura en tiempo real</p>
+<h3>Eventos</h3>
 <ul>
-<li>Cobertura de eventos</li>
-<li>Contenido en tiempo real</li>
-<li>Piezas post-evento</li>
-<li>Activaciones de marca</li>
+<li>Cobertura</li>
+<li>Contenido en vivo</li>
 </ul>
-<div class="focus">Enfoque: visibilidad + amplificación</div>
 </div>
 
 </div>
+</section>
+
+<!-- GALERIA -->
+<section>
+<h2 class="reveal">Galería</h2>
+<div class="gallery">
+<img src="https://picsum.photos/500/600?1" class="reveal">
+<img src="https://picsum.photos/500/600?2" class="reveal">
+<img src="https://picsum.photos/500/600?3" class="reveal">
+<img src="https://picsum.photos/500/600?4" class="reveal">
+</div>
+</section>
+
+<!-- PORTAFOLIO -->
+<section id="portfolio" class="portfolio">
+<h2 class="reveal">Portafolio</h2>
+
+<div class="category">
+<h3 class="reveal">Videoclips</h3>
+<div class="video-grid">
+<iframe src="https://player.vimeo.com/video/1"></iframe>
+<iframe src="https://player.vimeo.com/video/2"></iframe>
+</div>
+</div>
+
+<div class="category">
+<h3 class="reveal">Eventos</h3>
+<div class="video-grid">
+<iframe src="https://player.vimeo.com/video/3"></iframe>
+</div>
+</div>
+
+</section>
+
+<!-- CONTACTO -->
+<section id="contact">
+<h2 class="reveal">Contacto</h2>
+
+<div class="contact-buttons reveal">
+<a href="#">WhatsApp</a>
+<a href="#">Instagram</a>
+<a href="#">Correo</a>
+</div>
+
 </section>
 
 <script>
@@ -276,6 +324,19 @@ entry.target.classList.add('active');
 },{threshold:0.15});
 
 reveals.forEach(el=>observer.observe(el));
+
+/* blur imágenes */
+const imgs = document.querySelectorAll('.gallery img');
+
+const imgObserver = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('active');
+}
+});
+});
+
+imgs.forEach(img=>imgObserver.observe(img));
 </script>
 
 </body>
