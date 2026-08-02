@@ -3,131 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>By Juan Díaz</title>
+  <title>Juan Díaz | Portfolio</title>
 
-  <!-- ESTILOS -->
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
     }
 
     body {
-      background: #0f0f0f;
-      color: #ffffff;
-      line-height: 1.6;
+      background: #0a0a0a;
+      color: #fff;
     }
 
+    h1, h2 {
+      font-weight: 600;
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* HERO */
     header {
       height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
+      align-items: flex-start;
+      padding: 40px;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
+    header h1 {
+      font-size: 4rem;
     }
 
-    p {
-      max-width: 600px;
-      opacity: 0.8;
+    header p {
+      margin-top: 20px;
+      max-width: 500px;
+      opacity: 0.7;
     }
 
-    section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
+    /* GRID VIDEOS */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 20px;
       margin-top: 40px;
     }
 
-    .card {
-      background: #1a1a1a;
-      padding: 20px;
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
       border-radius: 10px;
-      transition: 0.3s;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      background: #222;
+    /* SERVICIOS */
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .service {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      flex: 1;
+      min-width: 200px;
     }
 
     footer {
       text-align: center;
-      padding: 40px 20px;
-      opacity: 0.6;
+      padding: 40px;
+      opacity: 0.5;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <header>
-    <h1>By Juan Díaz</h1>
-    <p>
-      Portafolio audiovisual de Juan Díaz. 
-      Videocreador de contenido para marcas y proyectos narrativos.
-    </p>
-  </header>
+<!-- HERO -->
+<header>
+  <h1>Juan Díaz</h1>
+  <p>
+    Productor audiovisual especializado en videoclips musicales, contenido de marca, edición y colorización.
+    Creo piezas visuales con identidad, narrativa y estética cinematográfica.
+  </p>
+</header>
 
-  <!-- TRABAJOS -->
-  <section>
-    <h2>Proyectos</h2>
+<!-- VIDEOCLIPS -->
+<section>
+  <h2>Videoclips</h2>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Proyecto 1</h3>
-        <p>Descripción breve del proyecto.</p>
-      </div>
+  <div class="grid">
+    <!-- PEGA AQUÍ TUS VIDEOS -->
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+  </div>
+</section>
 
-      <div class="card">
-        <h3>Proyecto 2</h3>
-        <p>Descripción breve del proyecto.</p>
-      </div>
+<!-- CONTENIDO DE MARCA -->
+<section>
+  <h2>Contenido de marca</h2>
 
-      <div class="card">
-        <h3>Proyecto 3</h3>
-        <p>Descripción breve del proyecto.</p>
-      </div>
-    </div>
-  </section>
+  <div class="grid">
+    <!-- PEGA AQUÍ OTROS -->
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+  </div>
+</section>
 
-  <!-- SOBRE MÍ -->
-  <section>
-    <h2>Sobre mí</h2>
-    <p>
-      Soy creador audiovisual enfocado en storytelling, contenido de marca y narrativa visual.
-      Trabajo en proyectos que combinan estética, emoción y estrategia.
-    </p>
-  </section>
+<!-- SERVICIOS -->
+<section>
+  <h2>Servicios</h2>
 
-  <!-- CONTACTO -->
-  <section>
-    <h2>Contacto</h2>
-    <p>
-      Escríbeme para colaborar o trabajar juntos.<br><br>
-      Email: juandiaz@email.com
-    </p>
-  </section>
+  <div class="services">
+    <div class="service">Dirección audiovisual</div>
+    <div class="service">Edición de video</div>
+    <div class="service">Color grading</div>
+    <div class="service">Contenido para marcas</div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 By Juan Díaz</p>
-  </footer>
+<!-- CONTACTO -->
+<section>
+  <h2>Contacto</h2>
+  <p>Email: tuemail@email.com</p>
+</section>
+
+<footer>
+  © 2026 Juan Díaz
+</footer>
 
 </body>
 </html>
